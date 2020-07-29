@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    var metronomeEnv = MetronomeEnvironment()
+    var metronomeRep = MetronomeRepository()
+    
     var body: some View {
-        Text("Hello, World!")
+        MetronomeView()
+        .environmentObject(metronomeEnv)
+        .environmentObject(metronomeRep)
     }
 }
 

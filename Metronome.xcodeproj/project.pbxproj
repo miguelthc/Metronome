@@ -16,6 +16,53 @@
 		F45DC4B624CF4E0A00D594B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45DC4B424CF4E0A00D594B3 /* LaunchScreen.storyboard */; };
 		F45DC4C124CF4E0A00D594B3 /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4C024CF4E0A00D594B3 /* MetronomeTests.swift */; };
 		F45DC4CC24CF4E0A00D594B3 /* MetronomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4CB24CF4E0A00D594B3 /* MetronomeUITests.swift */; };
+		F45DC51024CF4F6F00D594B3 /* NoteValueFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DA24CF4F6E00D594B3 /* NoteValueFraction.swift */; };
+		F45DC51124CF4F6F00D594B3 /* Rhythm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DC24CF4F6E00D594B3 /* Rhythm.swift */; };
+		F45DC51224CF4F6F00D594B3 /* Metronome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DD24CF4F6E00D594B3 /* Metronome.swift */; };
+		F45DC51324CF4F6F00D594B3 /* NoteValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DE24CF4F6E00D594B3 /* NoteValue.swift */; };
+		F45DC51424CF4F6F00D594B3 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DF24CF4F6E00D594B3 /* Measure.swift */; };
+		F45DC51524CF4F6F00D594B3 /* Beat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E024CF4F6E00D594B3 /* Beat.swift */; };
+		F45DC51624CF4F6F00D594B3 /* PlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E224CF4F6E00D594B3 /* PlayView.swift */; };
+		F45DC51724CF4F6F00D594B3 /* MetronomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E324CF4F6E00D594B3 /* MetronomeView.swift */; };
+		F45DC51824CF4F6F00D594B3 /* TapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E524CF4F6E00D594B3 /* TapView.swift */; };
+		F45DC51924CF4F6F00D594B3 /* KnobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E624CF4F6E00D594B3 /* KnobView.swift */; };
+		F45DC51A24CF4F6F00D594B3 /* BpmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E724CF4F6E00D594B3 /* BpmController.swift */; };
+		F45DC51B24CF4F6F00D594B3 /* BpmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E824CF4F6E00D594B3 /* BpmView.swift */; };
+		F45DC51C24CF4F6F00D594B3 /* PickerBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */; };
+		F45DC51D24CF4F6F00D594B3 /* RhythmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */; };
+		F45DC51E24CF4F6F00D594B3 /* RhythmPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */; };
+		F45DC51F24CF4F6F00D594B3 /* MeasureBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */; };
+		F45DC52024CF4F6F00D594B3 /* TimeSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */; };
+		F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */; };
+		F45DC52224CF4F6F00D594B3 /* BeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F024CF4F6E00D594B3 /* BeatView.swift */; };
+		F45DC52324CF4F6F00D594B3 /* BeatListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */; };
+		F45DC52424CF4F6F00D594B3 /* MeasureActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */; };
+		F45DC52524CF4F6F00D594B3 /* BeatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */; };
+		F45DC52624CF4F6F00D594B3 /* MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */; };
+		F45DC52724CF4F6F00D594B3 /* RhythmEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */; };
+		F45DC52824CF4F7000D594B3 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */; };
+		F45DC52924CF4F7000D594B3 /* Accent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F824CF4F6F00D594B3 /* Accent.swift */; };
+		F45DC52A24CF4F7000D594B3 /* OneHundredTwentyEighthRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FA24CF4F6F00D594B3 /* OneHundredTwentyEighthRest.swift */; };
+		F45DC52B24CF4F7000D594B3 /* SixtyFourthRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FB24CF4F6F00D594B3 /* SixtyFourthRest.swift */; };
+		F45DC52C24CF4F7000D594B3 /* SixteenthRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FC24CF4F6F00D594B3 /* SixteenthRest.swift */; };
+		F45DC52D24CF4F7000D594B3 /* HalfRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FD24CF4F6F00D594B3 /* HalfRest.swift */; };
+		F45DC52E24CF4F7000D594B3 /* WholeRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FE24CF4F6F00D594B3 /* WholeRest.swift */; };
+		F45DC52F24CF4F7000D594B3 /* ThirtySecondRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4FF24CF4F6F00D594B3 /* ThirtySecondRest.swift */; };
+		F45DC53024CF4F7000D594B3 /* EighthRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50024CF4F6F00D594B3 /* EighthRest.swift */; };
+		F45DC53124CF4F7000D594B3 /* QuarterRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50124CF4F6F00D594B3 /* QuarterRest.swift */; };
+		F45DC53224CF4F7000D594B3 /* MusicalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50224CF4F6F00D594B3 /* MusicalComponent.swift */; };
+		F45DC53324CF4F7000D594B3 /* EighthNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50424CF4F6F00D594B3 /* EighthNote.swift */; };
+		F45DC53424CF4F7000D594B3 /* ThirtySecondNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50524CF4F6F00D594B3 /* ThirtySecondNote.swift */; };
+		F45DC53524CF4F7000D594B3 /* WholeNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50624CF4F6F00D594B3 /* WholeNote.swift */; };
+		F45DC53624CF4F7000D594B3 /* QuarterNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50724CF4F6F00D594B3 /* QuarterNote.swift */; };
+		F45DC53724CF4F7000D594B3 /* SixteenthNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50824CF4F6F00D594B3 /* SixteenthNote.swift */; };
+		F45DC53824CF4F7000D594B3 /* HalfNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50924CF4F6F00D594B3 /* HalfNote.swift */; };
+		F45DC53924CF4F7000D594B3 /* SixtyFourthNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50A24CF4F6F00D594B3 /* SixtyFourthNote.swift */; };
+		F45DC53A24CF4F7000D594B3 /* OneHundredTwentyEighthNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50B24CF4F6F00D594B3 /* OneHundredTwentyEighthNote.swift */; };
+		F45DC53B24CF4F7000D594B3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50C24CF4F6F00D594B3 /* Dot.swift */; };
+		F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */; };
+		F45DC53D24CF4F7000D594B3 /* MetronomeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */; };
+		F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +98,53 @@
 		F45DC4C724CF4E0A00D594B3 /* MetronomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DC4CB24CF4E0A00D594B3 /* MetronomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeUITests.swift; sourceTree = "<group>"; };
 		F45DC4CD24CF4E0A00D594B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F45DC4DA24CF4F6E00D594B3 /* NoteValueFraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteValueFraction.swift; sourceTree = "<group>"; };
+		F45DC4DC24CF4F6E00D594B3 /* Rhythm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rhythm.swift; sourceTree = "<group>"; };
+		F45DC4DD24CF4F6E00D594B3 /* Metronome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metronome.swift; sourceTree = "<group>"; };
+		F45DC4DE24CF4F6E00D594B3 /* NoteValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteValue.swift; sourceTree = "<group>"; };
+		F45DC4DF24CF4F6E00D594B3 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		F45DC4E024CF4F6E00D594B3 /* Beat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beat.swift; sourceTree = "<group>"; };
+		F45DC4E224CF4F6E00D594B3 /* PlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayView.swift; sourceTree = "<group>"; };
+		F45DC4E324CF4F6E00D594B3 /* MetronomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeView.swift; sourceTree = "<group>"; };
+		F45DC4E524CF4F6E00D594B3 /* TapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
+		F45DC4E624CF4F6E00D594B3 /* KnobView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobView.swift; sourceTree = "<group>"; };
+		F45DC4E724CF4F6E00D594B3 /* BpmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BpmController.swift; sourceTree = "<group>"; };
+		F45DC4E824CF4F6E00D594B3 /* BpmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BpmView.swift; sourceTree = "<group>"; };
+		F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerBeatView.swift; sourceTree = "<group>"; };
+		F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmView.swift; sourceTree = "<group>"; };
+		F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmPickerView.swift; sourceTree = "<group>"; };
+		F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureBeatView.swift; sourceTree = "<group>"; };
+		F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureView.swift; sourceTree = "<group>"; };
+		F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatValueView.swift; sourceTree = "<group>"; };
+		F45DC4F024CF4F6E00D594B3 /* BeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatView.swift; sourceTree = "<group>"; };
+		F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatListContainerView.swift; sourceTree = "<group>"; };
+		F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureActionButtonsView.swift; sourceTree = "<group>"; };
+		F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatListView.swift; sourceTree = "<group>"; };
+		F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureView.swift; sourceTree = "<group>"; };
+		F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmEditorView.swift; sourceTree = "<group>"; };
+		F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		F45DC4F824CF4F6F00D594B3 /* Accent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accent.swift; sourceTree = "<group>"; };
+		F45DC4FA24CF4F6F00D594B3 /* OneHundredTwentyEighthRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHundredTwentyEighthRest.swift; sourceTree = "<group>"; };
+		F45DC4FB24CF4F6F00D594B3 /* SixtyFourthRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixtyFourthRest.swift; sourceTree = "<group>"; };
+		F45DC4FC24CF4F6F00D594B3 /* SixteenthRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixteenthRest.swift; sourceTree = "<group>"; };
+		F45DC4FD24CF4F6F00D594B3 /* HalfRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfRest.swift; sourceTree = "<group>"; };
+		F45DC4FE24CF4F6F00D594B3 /* WholeRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WholeRest.swift; sourceTree = "<group>"; };
+		F45DC4FF24CF4F6F00D594B3 /* ThirtySecondRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirtySecondRest.swift; sourceTree = "<group>"; };
+		F45DC50024CF4F6F00D594B3 /* EighthRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthRest.swift; sourceTree = "<group>"; };
+		F45DC50124CF4F6F00D594B3 /* QuarterRest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterRest.swift; sourceTree = "<group>"; };
+		F45DC50224CF4F6F00D594B3 /* MusicalComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicalComponent.swift; sourceTree = "<group>"; };
+		F45DC50424CF4F6F00D594B3 /* EighthNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthNote.swift; sourceTree = "<group>"; };
+		F45DC50524CF4F6F00D594B3 /* ThirtySecondNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirtySecondNote.swift; sourceTree = "<group>"; };
+		F45DC50624CF4F6F00D594B3 /* WholeNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WholeNote.swift; sourceTree = "<group>"; };
+		F45DC50724CF4F6F00D594B3 /* QuarterNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuarterNote.swift; sourceTree = "<group>"; };
+		F45DC50824CF4F6F00D594B3 /* SixteenthNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixteenthNote.swift; sourceTree = "<group>"; };
+		F45DC50924CF4F6F00D594B3 /* HalfNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfNote.swift; sourceTree = "<group>"; };
+		F45DC50A24CF4F6F00D594B3 /* SixtyFourthNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixtyFourthNote.swift; sourceTree = "<group>"; };
+		F45DC50B24CF4F6F00D594B3 /* OneHundredTwentyEighthNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneHundredTwentyEighthNote.swift; sourceTree = "<group>"; };
+		F45DC50C24CF4F6F00D594B3 /* Dot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
+		F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeGenerator.swift; sourceTree = "<group>"; };
+		F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEnvironment.swift; sourceTree = "<group>"; };
+		F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +198,14 @@
 				F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */,
 				F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */,
 				F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */,
+				F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */,
+				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
+				F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */,
+				F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */,
+				F45DC4DB24CF4F6E00D594B3 /* Models */,
+				F45DC4E124CF4F6E00D594B3 /* Views */,
+				F45DC4F724CF4F6F00D594B3 /* MusicalComponents */,
+				F45DC4D924CF4F6E00D594B3 /* MusicConcepts */,
 				F45DC4AF24CF4E0A00D594B3 /* Assets.xcassets */,
 				F45DC4B424CF4E0A00D594B3 /* LaunchScreen.storyboard */,
 				F45DC4B724CF4E0A00D594B3 /* Info.plist */,
@@ -137,6 +239,109 @@
 				F45DC4CD24CF4E0A00D594B3 /* Info.plist */,
 			);
 			path = MetronomeUITests;
+			sourceTree = "<group>";
+		};
+		F45DC4D924CF4F6E00D594B3 /* MusicConcepts */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4DA24CF4F6E00D594B3 /* NoteValueFraction.swift */,
+			);
+			path = MusicConcepts;
+			sourceTree = "<group>";
+		};
+		F45DC4DB24CF4F6E00D594B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4DC24CF4F6E00D594B3 /* Rhythm.swift */,
+				F45DC4DD24CF4F6E00D594B3 /* Metronome.swift */,
+				F45DC4DE24CF4F6E00D594B3 /* NoteValue.swift */,
+				F45DC4DF24CF4F6E00D594B3 /* Measure.swift */,
+				F45DC4E024CF4F6E00D594B3 /* Beat.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F45DC4E124CF4F6E00D594B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4E224CF4F6E00D594B3 /* PlayView.swift */,
+				F45DC4E324CF4F6E00D594B3 /* MetronomeView.swift */,
+				F45DC4E424CF4F6E00D594B3 /* Bpm */,
+				F45DC4E924CF4F6E00D594B3 /* Measure */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F45DC4E424CF4F6E00D594B3 /* Bpm */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4E524CF4F6E00D594B3 /* TapView.swift */,
+				F45DC4E624CF4F6E00D594B3 /* KnobView.swift */,
+				F45DC4E724CF4F6E00D594B3 /* BpmController.swift */,
+				F45DC4E824CF4F6E00D594B3 /* BpmView.swift */,
+			);
+			path = Bpm;
+			sourceTree = "<group>";
+		};
+		F45DC4E924CF4F6E00D594B3 /* Measure */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */,
+				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
+				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
+				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
+				F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */,
+				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
+				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
+				F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */,
+				F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */,
+				F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */,
+				F45DC4F024CF4F6E00D594B3 /* BeatView.swift */,
+				F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */,
+			);
+			path = Measure;
+			sourceTree = "<group>";
+		};
+		F45DC4F724CF4F6F00D594B3 /* MusicalComponents */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4F824CF4F6F00D594B3 /* Accent.swift */,
+				F45DC4F924CF4F6F00D594B3 /* Rests */,
+				F45DC50224CF4F6F00D594B3 /* MusicalComponent.swift */,
+				F45DC50324CF4F6F00D594B3 /* NoteValues */,
+				F45DC50C24CF4F6F00D594B3 /* Dot.swift */,
+			);
+			path = MusicalComponents;
+			sourceTree = "<group>";
+		};
+		F45DC4F924CF4F6F00D594B3 /* Rests */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4FA24CF4F6F00D594B3 /* OneHundredTwentyEighthRest.swift */,
+				F45DC4FB24CF4F6F00D594B3 /* SixtyFourthRest.swift */,
+				F45DC4FC24CF4F6F00D594B3 /* SixteenthRest.swift */,
+				F45DC4FD24CF4F6F00D594B3 /* HalfRest.swift */,
+				F45DC4FE24CF4F6F00D594B3 /* WholeRest.swift */,
+				F45DC4FF24CF4F6F00D594B3 /* ThirtySecondRest.swift */,
+				F45DC50024CF4F6F00D594B3 /* EighthRest.swift */,
+				F45DC50124CF4F6F00D594B3 /* QuarterRest.swift */,
+			);
+			path = Rests;
+			sourceTree = "<group>";
+		};
+		F45DC50324CF4F6F00D594B3 /* NoteValues */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC50424CF4F6F00D594B3 /* EighthNote.swift */,
+				F45DC50524CF4F6F00D594B3 /* ThirtySecondNote.swift */,
+				F45DC50624CF4F6F00D594B3 /* WholeNote.swift */,
+				F45DC50724CF4F6F00D594B3 /* QuarterNote.swift */,
+				F45DC50824CF4F6F00D594B3 /* SixteenthNote.swift */,
+				F45DC50924CF4F6F00D594B3 /* HalfNote.swift */,
+				F45DC50A24CF4F6F00D594B3 /* SixtyFourthNote.swift */,
+				F45DC50B24CF4F6F00D594B3 /* OneHundredTwentyEighthNote.swift */,
+			);
+			path = NoteValues;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,10 +475,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45DC52024CF4F6F00D594B3 /* TimeSignatureView.swift in Sources */,
+				F45DC51824CF4F6F00D594B3 /* TapView.swift in Sources */,
+				F45DC51024CF4F6F00D594B3 /* NoteValueFraction.swift in Sources */,
+				F45DC51B24CF4F6F00D594B3 /* BpmView.swift in Sources */,
+				F45DC53224CF4F7000D594B3 /* MusicalComponent.swift in Sources */,
+				F45DC52324CF4F6F00D594B3 /* BeatListContainerView.swift in Sources */,
+				F45DC51E24CF4F6F00D594B3 /* RhythmPickerView.swift in Sources */,
+				F45DC51924CF4F6F00D594B3 /* KnobView.swift in Sources */,
+				F45DC52B24CF4F7000D594B3 /* SixtyFourthRest.swift in Sources */,
 				F45DC4A724CF4DFF00D594B3 /* AppDelegate.swift in Sources */,
+				F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */,
+				F45DC53A24CF4F7000D594B3 /* OneHundredTwentyEighthNote.swift in Sources */,
+				F45DC53B24CF4F7000D594B3 /* Dot.swift in Sources */,
+				F45DC51424CF4F6F00D594B3 /* Measure.swift in Sources */,
+				F45DC51724CF4F6F00D594B3 /* MetronomeView.swift in Sources */,
+				F45DC53824CF4F7000D594B3 /* HalfNote.swift in Sources */,
+				F45DC52F24CF4F7000D594B3 /* ThirtySecondRest.swift in Sources */,
+				F45DC53524CF4F7000D594B3 /* WholeNote.swift in Sources */,
+				F45DC51524CF4F6F00D594B3 /* Beat.swift in Sources */,
+				F45DC53024CF4F7000D594B3 /* EighthRest.swift in Sources */,
+				F45DC53D24CF4F7000D594B3 /* MetronomeEnvironment.swift in Sources */,
+				F45DC53924CF4F7000D594B3 /* SixtyFourthNote.swift in Sources */,
+				F45DC52C24CF4F7000D594B3 /* SixteenthRest.swift in Sources */,
+				F45DC51A24CF4F6F00D594B3 /* BpmController.swift in Sources */,
 				F45DC4AC24CF4DFF00D594B3 /* Metronome.xcdatamodeld in Sources */,
+				F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */,
+				F45DC51224CF4F6F00D594B3 /* Metronome.swift in Sources */,
+				F45DC51124CF4F6F00D594B3 /* Rhythm.swift in Sources */,
+				F45DC51F24CF4F6F00D594B3 /* MeasureBeatView.swift in Sources */,
+				F45DC52824CF4F7000D594B3 /* AudioEngine.swift in Sources */,
+				F45DC53124CF4F7000D594B3 /* QuarterRest.swift in Sources */,
+				F45DC52A24CF4F7000D594B3 /* OneHundredTwentyEighthRest.swift in Sources */,
+				F45DC51324CF4F6F00D594B3 /* NoteValue.swift in Sources */,
+				F45DC51C24CF4F6F00D594B3 /* PickerBeatView.swift in Sources */,
+				F45DC53724CF4F7000D594B3 /* SixteenthNote.swift in Sources */,
 				F45DC4AE24CF4DFF00D594B3 /* ContentView.swift in Sources */,
+				F45DC52524CF4F6F00D594B3 /* BeatListView.swift in Sources */,
 				F45DC4A924CF4DFF00D594B3 /* SceneDelegate.swift in Sources */,
+				F45DC52424CF4F6F00D594B3 /* MeasureActionButtonsView.swift in Sources */,
+				F45DC51D24CF4F6F00D594B3 /* RhythmView.swift in Sources */,
+				F45DC52D24CF4F7000D594B3 /* HalfRest.swift in Sources */,
+				F45DC51624CF4F6F00D594B3 /* PlayView.swift in Sources */,
+				F45DC53324CF4F7000D594B3 /* EighthNote.swift in Sources */,
+				F45DC52624CF4F6F00D594B3 /* MeasureView.swift in Sources */,
+				F45DC52224CF4F6F00D594B3 /* BeatView.swift in Sources */,
+				F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */,
+				F45DC52724CF4F6F00D594B3 /* RhythmEditorView.swift in Sources */,
+				F45DC52924CF4F7000D594B3 /* Accent.swift in Sources */,
+				F45DC52E24CF4F7000D594B3 /* WholeRest.swift in Sources */,
+				F45DC53424CF4F7000D594B3 /* ThirtySecondNote.swift in Sources */,
+				F45DC53624CF4F7000D594B3 /* QuarterNote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
