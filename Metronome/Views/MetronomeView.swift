@@ -29,6 +29,10 @@ struct MetronomeView: View {
                 Spacer()
                 
                 BeatValueView()
+                    .onTapGesture {
+                    self.metronomeEnvironment.toggleCompoundMeasure()
+                    }
+                    .disabled(!metronomeEnvironment.measure.noteCountIsMultipleOf3)
             }
             
             BpmController()

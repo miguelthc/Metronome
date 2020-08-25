@@ -35,7 +35,6 @@
 		F45DC52024CF4F6F00D594B3 /* TimeSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */; };
 		F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */; };
 		F45DC52224CF4F6F00D594B3 /* BeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F024CF4F6E00D594B3 /* BeatView.swift */; };
-		F45DC52324CF4F6F00D594B3 /* BeatListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */; };
 		F45DC52424CF4F6F00D594B3 /* MeasureActionButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */; };
 		F45DC52524CF4F6F00D594B3 /* BeatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */; };
 		F45DC52624CF4F6F00D594B3 /* MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */; };
@@ -63,6 +62,7 @@
 		F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */; };
 		F45DC53D24CF4F7000D594B3 /* MetronomeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */; };
 		F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */; };
+		F4F1690124E42E670049BEDD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1690024E42E670049BEDD /* DAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +117,6 @@
 		F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureView.swift; sourceTree = "<group>"; };
 		F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatValueView.swift; sourceTree = "<group>"; };
 		F45DC4F024CF4F6E00D594B3 /* BeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatView.swift; sourceTree = "<group>"; };
-		F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatListContainerView.swift; sourceTree = "<group>"; };
 		F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureActionButtonsView.swift; sourceTree = "<group>"; };
 		F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatListView.swift; sourceTree = "<group>"; };
 		F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureView.swift; sourceTree = "<group>"; };
@@ -145,6 +144,7 @@
 		F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeGenerator.swift; sourceTree = "<group>"; };
 		F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEnvironment.swift; sourceTree = "<group>"; };
 		F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeRepository.swift; sourceTree = "<group>"; };
+		F4F1690024E42E670049BEDD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,7 @@
 				F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */,
 				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
 				F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */,
-				F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */,
+				F4F168FD24E403860049BEDD /* Database */,
 				F45DC4DB24CF4F6E00D594B3 /* Models */,
 				F45DC4E124CF4F6E00D594B3 /* Views */,
 				F45DC4F724CF4F6F00D594B3 /* MusicalComponents */,
@@ -290,7 +290,6 @@
 				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
 				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
 				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
-				F45DC4F124CF4F6E00D594B3 /* BeatListContainerView.swift */,
 				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
 				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
 				F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */,
@@ -342,6 +341,15 @@
 				F45DC50B24CF4F6F00D594B3 /* OneHundredTwentyEighthNote.swift */,
 			);
 			path = NoteValues;
+			sourceTree = "<group>";
+		};
+		F4F168FD24E403860049BEDD /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */,
+				F4F1690024E42E670049BEDD /* DAO.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,7 +488,6 @@
 				F45DC51024CF4F6F00D594B3 /* NoteValueFraction.swift in Sources */,
 				F45DC51B24CF4F6F00D594B3 /* BpmView.swift in Sources */,
 				F45DC53224CF4F7000D594B3 /* MusicalComponent.swift in Sources */,
-				F45DC52324CF4F6F00D594B3 /* BeatListContainerView.swift in Sources */,
 				F45DC51E24CF4F6F00D594B3 /* RhythmPickerView.swift in Sources */,
 				F45DC51924CF4F6F00D594B3 /* KnobView.swift in Sources */,
 				F45DC52B24CF4F7000D594B3 /* SixtyFourthRest.swift in Sources */,
@@ -500,6 +507,7 @@
 				F45DC52C24CF4F7000D594B3 /* SixteenthRest.swift in Sources */,
 				F45DC51A24CF4F6F00D594B3 /* BpmController.swift in Sources */,
 				F45DC4AC24CF4DFF00D594B3 /* Metronome.xcdatamodeld in Sources */,
+				F4F1690124E42E670049BEDD /* DAO.swift in Sources */,
 				F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */,
 				F45DC51224CF4F6F00D594B3 /* Metronome.swift in Sources */,
 				F45DC51124CF4F6F00D594B3 /* Rhythm.swift in Sources */,

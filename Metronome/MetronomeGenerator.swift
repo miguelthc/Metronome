@@ -110,7 +110,7 @@ class MetronomeGenerator: ObservableObject {
                     newRhythmValues[beat.id-1].append(RhythmValue(timeValue: timeSum, accent: noteValue.accent))
                 }
                 
-                timeSum += Float(noteValue.fractionOfBeat) * timeBetweenBeats
+                timeSum += Float(noteValue.fractionOfBeat) * timeBetweenBeats * (metronome.measure.compound ? 2/3 : 1)
             }
         }
         

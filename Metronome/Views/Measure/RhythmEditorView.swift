@@ -15,19 +15,14 @@ class RhythmEditorObject: ObservableObject {
     @Published var dot: Bool = false
     @Published var dotNum: Int = 1
     
-    let timeSignatureNoteValue: NoteValueFraction
-    
-    init(timeSignatureNoteValue: NoteValueFraction){
-        self.timeSignatureNoteValue = timeSignatureNoteValue
-    }
+    var compound: Bool = false
     
     func clearRhythm(){
-        print(rhythm.noteValues.count)
         rhythm.noteValues = []
     }
     
     func rhythmComplete() -> Bool{
-        return currentlyOccupied() == 1
+        return currentlyOccupied() == (compound ? 1.5 : 1)
     }
     
     private func currentlyOccupied() -> Double{
@@ -40,35 +35,43 @@ class RhythmEditorObject: ObservableObject {
         return occupied
     }
     
-    func noteValueFits(noteValue: NoteValueFraction) -> Bool {
+    func noteValueFits(noteValue: NoteValueFraction, timeSignatureNoteValue: NoteValueFraction) -> Bool {
         var occupied = currentlyOccupied()
         
-        let fractionOfBeat = noteValue.rawValue/timeSignatureNoteValue.rawValue
+        let baseFraction = noteValue.rawValue/(compound ? timeSignatureNoteValue.rawValue/2 : timeSignatureNoteValue.rawValue)
         
-        occupied += 1.0/Double(fractionOfBeat)
+        occupied += 1.0/Double(baseFraction)
         
         if(dot){
-            occupied += NoteValue.dotSum(baseFraction: fractionOfBeat, dots: dotNum)
+            occupied += NoteValue.dotSum(baseFraction: baseFraction, dots: dotNum)
         }
         
-        return occupied <= 1 && (!dot || noteValue.rawValue < NoteValueFraction.SIXTY_FOURTH.rawValue)
+        return occupied <= (compound ? 1.5 : 1 ) && (!dot || noteValue.rawValue < NoteValueFraction.SIXTY_FOURTH.rawValue)
     }
     
-    func addNoteValue(noteValueFraction: NoteValueFraction) {
-        let fractionOfBeat = noteValueFraction.rawValue/timeSignatureNoteValue.rawValue
+    func addNoteValue(noteValueFraction: NoteValueFraction, timeSignatureNoteValue: NoteValueFraction) {
+        let baseFraction = noteValueFraction.rawValue/(compound ? timeSignatureNoteValue.rawValue/2 : timeSignatureNoteValue.rawValue)
         
-        let noteValue = NoteValue(baseFraction: fractionOfBeat, isRest: rest, accent: accent , dots: dot ? dotNum : 0)
+        let noteValue = NoteValue(baseFraction: baseFraction, isRest: rest, accent: accent , dots: dot ? dotNum : 0)
         
         rhythm.noteValues.append(noteValue)
+    }
+    
+    func resetEditor(){
+        rhythm = Rhythm(noteValues: [])
+        rest = false
+        accent = false
+        dot = false
+        dotNum = 1
     }
 }
 
 struct RhythmEditorView: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     @EnvironmentObject var metronomeRepository: MetronomeRepository
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
     
-    @Binding var showBeatEditor: Bool
+    @Binding var showRhythmEditor: Bool
+    @Binding var showRhythmPicker: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -77,7 +80,7 @@ struct RhythmEditorView: View {
                 HStack {
                     Spacer()
                     
-                    Button(action: self.rhythmEditorObject.clearRhythm){
+                    Button(action: self.metronomeEnvironment.rhythmEditorObject.clearRhythm){
                         Text("Clear")
                     }.padding()
                 }
@@ -110,40 +113,39 @@ struct RhythmEditorView: View {
                  
                 Button(action: {
                     self.addRhythm()
-                    self.showBeatEditor = false
+                    self.showRhythmPicker = false
+                    self.showRhythmEditor = false
                 }){
                     Image(systemName: "plus")
                         .font(.system(size: 30))
                         .frame(width: 60, height: 60)
-                }.disabled(!self.rhythmEditorObject.rhythmComplete())
+                }.disabled(!self.metronomeEnvironment.rhythmEditorObject.rhythmComplete())
             }
         }
     }
     
     func addRhythm(){
-        metronomeRepository.addRhythm(rhythm: rhythmEditorObject.rhythm)
-        metronomeEnvironment.selectRhythm(rhythm: rhythmEditorObject.rhythm)
+        metronomeRepository.addRhythm(rhythm: metronomeEnvironment.rhythmEditorObject.rhythm, compound: metronomeEnvironment.measure.compound)
+        metronomeEnvironment.selectRhythm(rhythm: metronomeEnvironment.rhythmEditorObject.rhythm)
+        metronomeEnvironment.rhythmEditorObject.resetEditor()
     }
 }
 
 struct RhythmDisplay: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
+    
+    let rhythmDisplayMaxHeight: CGFloat = 50
     
     var body: some View {
-        HStack {
-
+        HStack{
             Spacer()
-
-            if(!rhythmEditorObject.rhythm.noteValues.isEmpty){
-                RhythmView(rhythm: rhythmEditorObject.rhythm, timeSignatureNoteValue: metronomeEnvironment.measure.timeSignatureNoteValue)
-            }else{
-                RhythmView(rhythm: Rhythm(), timeSignatureNoteValue: .QUARTER)
-                    .opacity(0)
+            
+            GeometryReader{ geometry in
+                RhythmView(rhythm: self.metronomeEnvironment.rhythmEditorObject.rhythm, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue, compound: self.metronomeEnvironment.measure.compound, geometry: geometry.size)
             }
-
+            
             Spacer()
-        }.frame(height: RhythmView.relativeHeight)
+        }.frame(height: rhythmDisplayMaxHeight)
         .padding(.vertical)
     }
 }
@@ -151,27 +153,26 @@ struct RhythmDisplay: View {
 
 struct NoteValueList: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
     
     let geometryWidth: CGFloat
 
     var body: some View {
-        HStack(alignment: rhythmEditorObject.rest ? .center : .bottom, spacing: 0) {
+        HStack(alignment: metronomeEnvironment.rhythmEditorObject.rest ? .center : .bottom, spacing: 0) {
             
             ForEach(NoteValueFraction.allCases.dropLast(), id: \.rawValue) { noteValue in
                 return Group{
-                    if(noteValue.rawValue >= self.metronomeEnvironment.measure.timeSignatureNoteValue.rawValue){
+                    if((self.metronomeEnvironment.measure.compound ? noteValue.rawValue*2 : noteValue.rawValue)  >= self.metronomeEnvironment.measure.timeSignature.noteValue.rawValue){
                         
-                        if(!self.rhythmEditorObject.rest){
+                        if(!self.metronomeEnvironment.rhythmEditorObject.rest){
                             NoteValue.noteValueView(relativeHeight: 70, fractionOfBeat: 1, timeSignatureNoteValue: noteValue)
                         }else{
                             NoteValue.restView(relativeHeight: 70, fractionOfBeat: 1, timeSignatureNoteValue: noteValue)
                         }
                     }
-                }.opacity(self.rhythmEditorObject.noteValueFits(noteValue: noteValue) ? 1 : 0.5)
+                }.opacity(self.metronomeEnvironment.rhythmEditorObject.noteValueFits(noteValue: noteValue, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue) ? 1 : 0.5)
                 .onTapGesture {
-                    if(self.rhythmEditorObject.noteValueFits(noteValue: noteValue)){
-                        self.rhythmEditorObject.addNoteValue(noteValueFraction: noteValue)
+                    if(self.metronomeEnvironment.rhythmEditorObject.noteValueFits(noteValue: noteValue, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue)){
+                        self.metronomeEnvironment.rhythmEditorObject.addNoteValue(noteValueFraction: noteValue, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue)
                     }
                 }
                 .frame(width: self.geometryWidth/CGFloat(NoteValueFraction.allCases.dropLast().count) - 2)
@@ -181,46 +182,46 @@ struct NoteValueList: View {
 }
 
 struct RestToggle: View {
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
 
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .stroke(lineWidth: 3)
             .foregroundColor(.blue)
-            .opacity(rhythmEditorObject.rest ? 1 : 0)
+            .opacity(metronomeEnvironment.rhythmEditorObject.rest ? 1 : 0)
             .overlay(QuarterRest(relativeHeight: 70))
             .frame(width: 70, height: 70)
             .onTapGesture {
-                self.rhythmEditorObject.rest.toggle()
-                self.rhythmEditorObject.accent = false
+                self.metronomeEnvironment.rhythmEditorObject.rest.toggle()
+                self.metronomeEnvironment.rhythmEditorObject.accent = false
             }
     }
 }
  
 
 struct AccentToggle: View {
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .stroke(lineWidth: 3)
             .foregroundColor(.blue)
-            .opacity(rhythmEditorObject.accent ? 1 : 0)
+            .opacity(metronomeEnvironment.rhythmEditorObject.accent ? 1 : 0)
             .overlay(
                 Accent(relativeHeight: 70)
-                    .opacity(rhythmEditorObject.rest ? 0.5 : 1)
+                    .opacity(metronomeEnvironment.rhythmEditorObject.rest ? 0.5 : 1)
             )
             .frame(width: 70, height: 70)
             .onTapGesture {
-                self.rhythmEditorObject.accent.toggle()
+                self.metronomeEnvironment.rhythmEditorObject.accent.toggle()
             }
-            .disabled(rhythmEditorObject.rest)
+            .disabled(metronomeEnvironment.rhythmEditorObject.rest)
     }
 }
 
 
 struct DotToggle: View {
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     
     @State var showDotNumSelec: Bool = false
 
@@ -228,11 +229,11 @@ struct DotToggle: View {
         RoundedRectangle(cornerRadius: 20)
             .stroke(lineWidth: 3)
             .foregroundColor(.blue)
-            .opacity(rhythmEditorObject.dot ? 1 : 0)
+            .opacity(metronomeEnvironment.rhythmEditorObject.dot ? 1 : 0)
             .overlay(
                 
                 HStack(spacing: 3){
-                    ForEach(1...rhythmEditorObject.dotNum, id: \.self){ _ in
+                    ForEach(1...metronomeEnvironment.rhythmEditorObject.dotNum, id: \.self){ _ in
                         Dot(relativeHeight: 70)
                     }
                 }
@@ -251,7 +252,7 @@ struct DotToggle: View {
             )
             .frame(width: 70, height: 70)
             .onTapGesture {
-                self.rhythmEditorObject.dot.toggle()
+                self.metronomeEnvironment.rhythmEditorObject.dot.toggle()
             }
             .onLongPressGesture {
                 self.showDotNumSelec.toggle()
@@ -262,7 +263,7 @@ struct DotToggle: View {
 }
 
 struct DotNumSelec: View {
-    @EnvironmentObject var rhythmEditorObject: RhythmEditorObject
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     @Binding var showDotNumSelec: Bool
     
     let maxDots = 3
@@ -276,7 +277,7 @@ struct DotNumSelec: View {
                     }
                 }.frame(width: 40)
                 .onTapGesture {
-                    self.rhythmEditorObject.dotNum = dotNum
+                    self.metronomeEnvironment.rhythmEditorObject.dotNum = dotNum
                     self.showDotNumSelec = false
                 }
             }
@@ -286,6 +287,6 @@ struct DotNumSelec: View {
 
 struct RhythmEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        RhythmEditorView(showBeatEditor: .constant(true))
+        RhythmEditorView(showRhythmEditor: .constant(true), showRhythmPicker: .constant(false))
     }
 }

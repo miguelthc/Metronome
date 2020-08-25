@@ -30,7 +30,8 @@ struct MeasureBeatView: View {
             }
             
             BeatView(rhythm: beat.rhythm,
-                     timeSignatureNoteValue: metronomeEnvironment.measure.timeSignatureNoteValue,
+                     timeSignatureNoteValue: metronomeEnvironment.measure.timeSignature.noteValue,
+                     compound: metronomeEnvironment.measure.compound,
                      selected: metronomeEnvironment.selectedBeats.contains(beat.id),
                      secondSelected: metronomeEnvironment.multipleBeatsSelectionMode,
                      isValid: !metronomeEnvironment.invalidBeats.contains(beat.id))

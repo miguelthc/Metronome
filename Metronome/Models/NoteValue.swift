@@ -28,10 +28,30 @@ struct NoteValue: Identifiable {
     }
 }
 
+extension NoteValue: Equatable, Hashable {
+    static func == (lhs: NoteValue, rhs: NoteValue) -> Bool {
+        return lhs.id == rhs.id && lhs.baseFraction == rhs.baseFraction && lhs.isRest == rhs.isRest && lhs.accent == rhs.accent && lhs.dots == rhs.dots
+    }
+    
+    static func != (lhs: NoteValue, rhs: NoteValue) -> Bool {
+        return lhs.id != rhs.id || lhs.baseFraction != rhs.baseFraction || lhs.isRest != rhs.isRest || lhs.accent != rhs.accent || lhs.dots != rhs.dots
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(baseFraction)
+        hasher.combine(isRest)
+        hasher.combine(accent)
+        hasher.combine(dots)
+    }
+    
+    
+}
+
 extension NoteValue {
     func image(timeSignatureNoteValue: NoteValueFraction, relativeHeight: CGFloat) -> AnyView {
         return AnyView(
-            HStack(alignment: .bottom, spacing: isFlagged(timeSignatureNoteValue: timeSignatureNoteValue) ? 1 : relativeHeight/3.14/3){
+            HStack(alignment: .bottom, spacing: isFlagged(timeSignatureNoteValue: timeSignatureNoteValue) ? relativeHeight/20 : relativeHeight/3.14/3){
                 
                 if !isRest {
                     ZStack(alignment: .bottom){
@@ -45,9 +65,11 @@ extension NoteValue {
                     NoteValue.restView(relativeHeight: relativeHeight, fractionOfBeat: baseFraction, timeSignatureNoteValue: timeSignatureNoteValue)
                 }
                 
-                if(isDotted()){
-                    ForEach (1...dots, id: \.self){ _ in
-                        NoteValue.addDots(relativeHeight: 40)
+                HStack(spacing: relativeHeight/16) {
+                    if(isDotted()){
+                        ForEach (1...dots, id: \.self){ _ in
+                            NoteValue.addDots(relativeHeight: 40)
+                        }
                     }
                 }
             }
@@ -61,7 +83,7 @@ extension NoteValue {
     
     
     func isFlagged(timeSignatureNoteValue: NoteValueFraction) -> Bool {
-        return baseFraction * timeSignatureNoteValue.rawValue > NoteValueFraction.QUARTER.rawValue
+        return baseFraction * timeSignatureNoteValue.rawValue > NoteValueFraction.QUARTER.rawValue && !isRest
     }
     
     static func dotSum(baseFraction: Int, dots: Int) -> Double {
@@ -129,5 +151,12 @@ extension NoteValue {
             default:
                 return AnyView(EmptyView())
         }
+    }
+    
+    //Implement later
+    func widthQ(compound: Bool){
+        //switch(){
+            
+        //}
     }
 }

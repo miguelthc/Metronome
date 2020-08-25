@@ -7,18 +7,102 @@
 
 import SwiftUI
 
+let FLAGGED_Q: Float = 14.49
+let NOTE_VALUE_Q: Float = 8.9
+let DOT_Q: Float = 2.97
+
+let FLAG_DOT_SPACING_Q: Float = 1.4
+let NOTE_VALUE_DOT_SPACING_Q: Float = 2.97
+let DOT_SPACING_Q: Float = 1.75
+
+let SPACING_Q: Float = 5.6
+
 struct RhythmView: View {
     let rhythm: Rhythm
     let timeSignatureNoteValue: NoteValueFraction
+    var rhythmComponents: [RhythmComponent] = []
     
-    static let relativeHeight: CGFloat = 28
+    var widthSum: Float = 0
+    var relativeHeight: CGFloat = 0
+    
+    init(rhythm: Rhythm, timeSignatureNoteValue: NoteValueFraction, compound: Bool = false, geometry: CGSize, maxHeight: CGFloat? = nil){
+        self.rhythm = rhythm
+        self.timeSignatureNoteValue = !compound ? timeSignatureNoteValue : NoteValueFraction.allCases[NoteValueFraction.allCases.firstIndex(of: timeSignatureNoteValue)! - 1]
+        
+        self.rhythmComponents = rhythmToComponents()
+        
+        for rhythmComponent in rhythmComponents {
+            if rhythmComponent is Isolated {
+                if((rhythmComponent as! Isolated).noteValue.isRest){
+                    switch((rhythmComponent as! Isolated).noteValue.baseFraction * timeSignatureNoteValue.rawValue){
+                        case NoteValueFraction.WHOLE.rawValue,
+                             NoteValueFraction.HALF.rawValue:
+                            widthSum += 17.8
+                        case NoteValueFraction.QUARTER.rawValue:
+                            widthSum += 6.675
+                        case NoteValueFraction.EIGHTH.rawValue:
+                            widthSum += 6.02
+                        case NoteValueFraction.SIXTEENTH.rawValue:
+                            widthSum += 7.74
+                        case NoteValueFraction.THIRTY_SECOND.rawValue:
+                            widthSum += 8.9
+                        case NoteValueFraction.SIXTY_FOURTH.rawValue:
+                            widthSum += 9.67
+                        case NoteValueFraction.ONE_HUNDRED_TWENTY_EIGHTH.rawValue:
+                            widthSum += 9.8
+                        default:
+                            break
+                    }
+                    
+                    if((rhythmComponent as! Isolated).noteValue.isDotted()){
+                        widthSum += NOTE_VALUE_DOT_SPACING_Q
+                    }
+                }else{
+                    if (rhythmComponent as! Isolated).noteValue.isFlagged(timeSignatureNoteValue: timeSignatureNoteValue) {
+                        widthSum += FLAGGED_Q
+                        
+                        if((rhythmComponent as! Isolated).noteValue.isDotted()){
+                            widthSum += FLAG_DOT_SPACING_Q
+                        }
+                    }else{
+                        widthSum += NOTE_VALUE_Q
+                        
+                        if((rhythmComponent as! Isolated).noteValue.isDotted()){
+                            widthSum += NOTE_VALUE_DOT_SPACING_Q
+                        }
+                    }
+                }
+                
+                widthSum += Float((rhythmComponent as! Isolated).noteValue.dots) * (DOT_Q + DOT_SPACING_Q) - DOT_SPACING_Q
+            }else{
+                for dots in (rhythmComponent as! Beamed).dots {
+                    widthSum += NOTE_VALUE_Q
+                    
+                    if(dots > 0){
+                        widthSum += NOTE_VALUE_DOT_SPACING_Q
+                    }
+                    
+                    widthSum += Float(dots) * (DOT_Q + DOT_SPACING_Q) - DOT_SPACING_Q
+                    widthSum += SPACING_Q
+                }
+            }
+            
+            widthSum += SPACING_Q
+        }
+        
+        widthSum -= SPACING_Q
+        
+        
+        relativeHeight = min(maxHeight != nil ? (maxHeight!) : geometry.height, CGFloat(NOTE_VALUE_Q*Float(geometry.width)/widthSum*3.14))
+        
+    }
     
     var body: some View {
-        HStack(alignment: .bottom, spacing: 5){
+        HStack(alignment: .bottom, spacing: relativeHeight/5.6){
             ForEach(rhythmToComponents(), id: \.id){ component in
                 Group{
                     if component is Beamed {
-                        BeamedView(beamed: (component as! Beamed))
+                        BeamedView(beamed: (component as! Beamed), relativeHeight: self.relativeHeight)
                     } else {
                         self.isolated(isolated: (component as! Isolated))
                     }
@@ -32,16 +116,19 @@ struct BeamedView: View{
     let beamed: Beamed
     @State var quarterNotePoints: [CGPoint]
     
-    init(beamed: Beamed){
+    let relativeHeight: CGFloat
+    
+    init(beamed: Beamed, relativeHeight: CGFloat){
         self.beamed = beamed
         _quarterNotePoints = State(initialValue: Array<CGPoint>(repeating: CGPoint(), count: beamed.dots.count))
+        self.relativeHeight = relativeHeight
     }
     
     var body: some View {
         ZStack(alignment: .topLeading){
-            HStack(alignment: .bottom, spacing: 5){
+            HStack(alignment: .bottom, spacing: relativeHeight/5.6){
                 ForEach(beamed.dots.indices, id: \.self){ index in
-                    BeamedQuarterNote(dots: self.beamed.dots[index], accent: self.beamed.accents[index], index: index)
+                    BeamedQuarterNote(dots: self.beamed.dots[index], accent: self.beamed.accents[index], index: index, relativeHeight: self.relativeHeight)
                 }
             }.onPreferenceChange(QuarterNotePreferenceKey.self) { preferences in
                 for p in preferences {
@@ -52,7 +139,7 @@ struct BeamedView: View{
             
             ForEach(self.beamed.beams.indices, id: \.self){ index in
                 ForEach(self.beamed.beams[index], id: \.id){ beam in
-                    BeamView(beam: beam, index: index, quarterNotePoints: self.quarterNotePoints)
+                    BeamView(beam: beam, index: index, quarterNotePoints: self.quarterNotePoints, relativeHeight: self.relativeHeight)
                         
                 }
             }
@@ -64,14 +151,15 @@ struct BeamView: View {
     let beam: Beam
     let index: Int
     let quarterNotePoints: [CGPoint]
+    let relativeHeight: CGFloat
     
     var body: some View {
         Rectangle()
             .frame(width:
-                    beam.length == 0 || beam.length == -1 ? 7 :
+                    beam.length == 0 || beam.length == -1 ? relativeHeight/4 :
                 self.quarterNotePoints[beam.startPosition + beam.length].x - self.quarterNotePoints[beam.startPosition].x,
-                   height: 1.8)
-            .offset(x: beam.length == -1 ? self.quarterNotePoints[beam.startPosition].x - 7 : self.quarterNotePoints[beam.startPosition].x, y: CGFloat(index*4))
+                   height: relativeHeight/15.56)
+            .offset(x: beam.length == -1 ? self.quarterNotePoints[beam.startPosition].x - relativeHeight/4 : self.quarterNotePoints[beam.startPosition].x, y: CGFloat(index)*relativeHeight/7)
     }
 }
 
@@ -79,22 +167,23 @@ struct BeamedQuarterNote: View {
     let dots: Int
     let accent: Bool
     let index: Int
+    let relativeHeight: CGFloat
     
     var body: some View {
-        HStack(alignment: .bottom, spacing: RhythmView.relativeHeight/3.14/3){
+        HStack(alignment: .bottom, spacing: relativeHeight/3.14/3){
             ZStack(alignment: .bottom){
-                QuarterNote(relativeHeight: RhythmView.relativeHeight)
+                QuarterNote(relativeHeight: relativeHeight)
                     .background(QuarterNotePreferenceViewSetter(idx: index))
                 
                 if(accent){
-                    Accent(relativeHeight: RhythmView.relativeHeight)
-                        .offset(y: RhythmView.relativeHeight/3)
+                    Accent(relativeHeight: relativeHeight)
+                        .offset(y: relativeHeight/3)
                 }
             }
             
             if(dots > 0){
                 ForEach(1...dots, id: \.self){ _ in
-                    NoteValue.addDots(relativeHeight: RhythmView.relativeHeight)
+                    NoteValue.addDots(relativeHeight: self.relativeHeight)
                 }
             }
         }
@@ -129,10 +218,12 @@ struct QuarterNotePreferenceData: Equatable {
     let point: CGPoint
 }
   
+
+
 extension RhythmView {
     func isolated(isolated: Isolated) -> AnyView {
         return AnyView(
-            isolated.noteValue.image(timeSignatureNoteValue: timeSignatureNoteValue, relativeHeight: RhythmView.relativeHeight)
+            isolated.noteValue.image(timeSignatureNoteValue: timeSignatureNoteValue, relativeHeight: relativeHeight)
         )
     }
     
@@ -174,7 +265,7 @@ extension RhythmView {
             return gcd
         }
         
-        
+        // NOT BEING USED - ADD TO EVERY NOTE ADDED
         func updateSum(noteValue: NoteValue){
             sum += maxFraction/Int((1.0/noteValue.fractionOfBeat).rounded())
         }
@@ -182,7 +273,7 @@ extension RhythmView {
         
         func appendIsolated(noteValue: NoteValue){
             rhythmComponents.append(Isolated(noteValue: noteValue))
-            updateSum(noteValue: noteValue)
+            //updateSum(noteValue: noteValue)
             i += 1
         }
         
@@ -280,7 +371,7 @@ extension RhythmView {
                 
                 let maxBeams: Int = numOfDivisions + Int(log2(Double(timeSignatureNoteValue.rawValue))) - beamNumOffset
                 
-                //This is super wrong
+                //This is super wrong?
                 if(i+1 < rhythm.noteValues.count && !isBeamed(noteValue: rhythm.noteValues[i+1]) && beamed.dots.isEmpty){ // if beam properties have split a beamed and you get an isolated on the right side
                     appendIsolated(noteValue: noteValue)
                 }
@@ -348,6 +439,6 @@ struct Beam: Identifiable {
 
 struct RhythmView_Previews: PreviewProvider {
     static var previews: some View {
-        RhythmView(rhythm: Rhythm(), timeSignatureNoteValue: .QUARTER)
+        RhythmView(rhythm: Rhythm(), timeSignatureNoteValue: .QUARTER, geometry: .zero)
     }
 }

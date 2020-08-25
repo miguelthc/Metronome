@@ -20,9 +20,14 @@ class MetronomeEnvironment: ObservableObject {
     @Published var multipleBeatsSelectionMode = false
     @Published var beatListZoomed = false
     
+    @Published var rhythmEditorObject = RhythmEditorObject()
+    var rhythmEditorCancellable: AnyCancellable? = nil
+    
+    
     @Published var beepOccured: Bool = false
     @Published var beatOccured: Bool = false
     var beatPlaying = 0
+    
     
     private var tapTimeStamps: [Double] = []
     
@@ -45,6 +50,10 @@ class MetronomeEnvironment: ObservableObject {
         beatOccuredCancellable = metronomeGenerator.$beatOccured
             .receive(on: DispatchQueue.main)
             .assign(to: \.beatOccured, on: self)
+        
+        rhythmEditorCancellable = rhythmEditorObject.objectWillChange.sink { _ in
+            self.objectWillChange.send()
+        }
     }
     
     var bpm: Double {
@@ -107,12 +116,19 @@ class MetronomeEnvironment: ObservableObject {
     
     func incrementBeatsPerMeasure(){
         if(measure.beatsPerMeasure < Measure.maxBeatsPerMeasure) {
-            let newBeatRhythm = Rhythm()
+            let newBeatRhythm = measure.defaultBeat()
             let newBeat = Beat(id: measure.beatsPerMeasure + 1, rhythm: newBeatRhythm)
             if(allBeatsSelected){
                 selectedBeats.append(newBeat.id)
             }
             measure.beats.append(newBeat)
+            
+            if(measure.compound){
+                measure.timeSignature.noteCount += 3
+            }else{
+                measure.timeSignature.noteCount += 1
+            }
+            
             updateMetronomeGenerator()
         }
     }
@@ -127,20 +143,26 @@ class MetronomeEnvironment: ObservableObject {
             
             measure.beats.remove(at: measure.beatsPerMeasure - 1)
             
+            if(measure.compound){
+                measure.timeSignature.noteCount -= 3
+            }else{
+                measure.timeSignature.noteCount -= 1
+            }
+            
             updateMetronomeGenerator()
         }
     }
     
     func incrementMeasureNoteValue(){
-        if(measure.timeSignatureNoteValue.rawValue < NoteValueFraction.SIXTY_FOURTH.rawValue){
-            measure.timeSignatureNoteValue = NoteValueFraction.allCases[NoteValueFraction.allCases.firstIndex(of: measure.timeSignatureNoteValue)! + 1]
+        if(measure.timeSignature.noteValue.rawValue < NoteValueFraction.SIXTY_FOURTH.rawValue){
+            measure.timeSignature.noteValue = NoteValueFraction.allCases[NoteValueFraction.allCases.firstIndex(of: measure.timeSignature.noteValue)! + 1]
         }
         
     }
        
     func decrementMeasureNoteValue(){
-        if(measure.timeSignatureNoteValue.rawValue > NoteValueFraction.allCases.first!.rawValue){
-            measure.timeSignatureNoteValue = NoteValueFraction.allCases[NoteValueFraction.allCases.firstIndex(of: measure.timeSignatureNoteValue)! - 1]
+        if(measure.timeSignature.noteValue.rawValue > NoteValueFraction.allCases.first!.rawValue){
+            measure.timeSignature.noteValue = NoteValueFraction.allCases[NoteValueFraction.allCases.firstIndex(of: measure.timeSignature.noteValue)! - 1]
         }
     }
     
@@ -166,6 +188,13 @@ class MetronomeEnvironment: ObservableObject {
                 if(measure.beats[j].id == i){
                     removeInvalidBeat(id: i)
                     measure.beats.remove(at: j)
+                    
+                    if(measure.compound){
+                        measure.timeSignature.noteCount -= 3
+                    }else{
+                        measure.timeSignature.noteCount -= 1
+                    }
+                    
                     break
                 }
             }
@@ -188,6 +217,12 @@ class MetronomeEnvironment: ObservableObject {
     func duplicateBeat(){
         let id = selectedBeats[0] + 1
         measure.beats.insert(Beat(id: id, rhythm: Rhythm(noteValues: measure.beats[id-2].rhythm.noteValues)), at: id-1)
+        
+        if(measure.compound){
+            measure.timeSignature.noteCount += 3
+        }else{
+            measure.timeSignature.noteCount += 1
+        }
         
         //change beats id
         for i in id..<measure.beats.count {
@@ -260,7 +295,7 @@ class MetronomeEnvironment: ObservableObject {
     
     func replaceInvalidRhythm(id: Int){
         invalidBeats.append(id)
-        measure.beats[id-1].rhythm = Rhythm()
+        measure.beats[id-1].rhythm = measure.defaultBeat()
         
         if(selectedBeats.contains(beatPlaying)){
             resetMetronomeGenerator()
@@ -321,6 +356,18 @@ class MetronomeEnvironment: ObservableObject {
         }
     }
     
+    func toggleCompoundMeasure(){
+        measure.compound.toggle()
+        
+        selectedBeats = []
+        invalidBeats = []
+        measure.beats = []
+        
+        for i in 1...measure.beatsPerMeasure{
+            measure.beats.append(Beat(id: i, rhythm: measure.defaultBeat()))
+        }
+    }
+    
     private func removeInvalidBeat(id: Int){
         if(self.invalidBeats.contains(id)){
             self.invalidBeats.remove(at: self.invalidBeats.firstIndex(of: id)!)
@@ -339,4 +386,5 @@ class MetronomeEnvironment: ObservableObject {
             metronomeGenerator.playMetronome()
         }
     }
+    
 }

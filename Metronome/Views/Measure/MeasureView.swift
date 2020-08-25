@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MeasureView: View {
+    @State var showRhythmPicker: Bool = false
+    
     var body: some View {
         VStack{
-            MeasureActionButtonsView()
+            MeasureActionButtonsView(showRhythmPicker: $showRhythmPicker)
             
-            BeatListContainerView()
+            BeatListView(showRhythmPicker: $showRhythmPicker)
         }
     }
 }

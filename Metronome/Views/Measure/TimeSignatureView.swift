@@ -14,9 +14,9 @@ struct TimeSignatureView: View {
     var body: some View {
         ZStack {
             VStack (spacing: 0.5){
-                Text("\(metronomeEnvironment.metronome.measure.beatsPerMeasure)")
+                Text("\(metronomeEnvironment.metronome.measure.timeSignature.noteCount)")
                 
-                Text("\(metronomeEnvironment.metronome.measure.timeSignatureNoteValue.rawValue)")
+                Text("\(metronomeEnvironment.metronome.measure.timeSignature.noteValue.rawValue)")
                 
             }.onTapGesture {
                 self.showIncrementers.toggle()
@@ -33,8 +33,8 @@ struct TimeSignatureView: View {
                 
                 Incrementer(increment: metronomeEnvironment.incrementMeasureNoteValue,
                             decrement: metronomeEnvironment.decrementMeasureNoteValue,
-                            decrementDisabled: metronomeEnvironment.measure.timeSignatureNoteValue == NoteValueFraction.WHOLE,
-                            incrementDisabled: metronomeEnvironment.measure.timeSignatureNoteValue == NoteValueFraction.SIXTY_FOURTH)
+                            decrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == (metronomeEnvironment.measure.compound ? NoteValueFraction.HALF : NoteValueFraction.WHOLE),
+                            incrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == NoteValueFraction.SIXTY_FOURTH)
                     .offset(y: 55)
             }
         }
@@ -77,7 +77,7 @@ struct TimeSignatureStyle: ViewModifier {
             .frame(width: 60, height: 60)
             .font(.custom("", size: 22))
             .overlay(RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(red: 50/255, green: 50/255, blue: 50/255), lineWidth: 0.8)
+                .stroke(Color(red: 50/255, green: 50/255, blue: 50/255), lineWidth: 1)
                 .shadow(color: Color.black, radius: 0.5))
             .padding(.horizontal, 25)
     }

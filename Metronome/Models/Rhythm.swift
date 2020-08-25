@@ -23,3 +23,14 @@ extension Rhythm {
         return true
     }
 }
+
+extension Rhythm: Hashable {
+    static func == (lhs: Rhythm, rhs: Rhythm) -> Bool {
+        return lhs.id == rhs.id && lhs.noteValues == rhs.noteValues
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(noteValues)
+    }
+}

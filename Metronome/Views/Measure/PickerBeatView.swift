@@ -14,11 +14,9 @@ struct PickerBeatView: View {
     
     var body: some View {
         BeatView(rhythm: rhythm,
-                 timeSignatureNoteValue: metronomeEnvironment.measure.timeSignatureNoteValue
+                 timeSignatureNoteValue: metronomeEnvironment.measure.timeSignature.noteValue,
+                 compound: metronomeEnvironment.measure.compound
         )
-        .onTapGesture {
-            self.metronomeEnvironment.selectRhythm(rhythm: self.rhythm)
-        }
     }
 }
 
