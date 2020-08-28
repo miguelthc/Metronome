@@ -19,7 +19,7 @@ struct MeasureView: View {
             }else{
                 SquareMeasureView()
             }
-        }
+        }.frame(height: 80)
     }
 }
 
