@@ -8,6 +8,22 @@
 import SwiftUI
 
 struct MeasureView: View {
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
+    
+    var body: some View {
+        Group{
+            if(metronomeEnvironment.measureType == MeasureType.Simple){
+                SimpleMeasureView()
+            }else if(metronomeEnvironment.measureType == MeasureType.Beats){
+                BeatMeasureView()
+            }else{
+                SquareMeasureView()
+            }
+        }
+    }
+}
+
+struct BeatMeasureView: View {
     @State var showRhythmPicker: Bool = false
     
     var body: some View {

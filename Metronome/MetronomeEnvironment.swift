@@ -10,6 +10,8 @@ import Combine
 import SwiftUI
 
 class MetronomeEnvironment: ObservableObject {
+    @Published var measureType: MeasureType = MeasureType.Beats
+    
     // Metronome
     @Published var metronome = Metronome()
     @Published var isPlaying = false
@@ -27,7 +29,6 @@ class MetronomeEnvironment: ObservableObject {
     @Published var beepOccured: Bool = false
     @Published var beatOccured: Bool = false
     var beatPlaying = 0
-    
     
     private var tapTimeStamps: [Double] = []
     
@@ -387,4 +388,10 @@ class MetronomeEnvironment: ObservableObject {
         }
     }
     
+}
+
+enum MeasureType {
+    case Simple
+    case Beats
+    case Square
 }
