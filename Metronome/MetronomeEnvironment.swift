@@ -35,7 +35,7 @@ class MetronomeEnvironment: ObservableObject {
     var beatCountCancellable: AnyCancellable?
     var beatOccuredCancellable: AnyCancellable?
     
-    private let metronomeGenerator = MetronomeGenerator()
+    let metronomeGenerator = MetronomeGenerator()
     
     init() {
         beppOccuredCancellable = metronomeGenerator.$beepOccured
