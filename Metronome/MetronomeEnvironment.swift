@@ -109,6 +109,8 @@ class MetronomeEnvironment: ObservableObject {
     func decrementBpm(){
         if(bpm-1 < Metronome.minBpm) {
             bpm = Metronome.minBpm
+        }else if(bpm > Metronome.maxBpm){
+            bpm = Metronome.maxBpm
         }else{
             bpm -= 1
         }

@@ -93,7 +93,7 @@ struct RhythmView: View {
         widthSum -= SPACING_Q
         
         
-        relativeHeight = min(maxHeight != nil ? (maxHeight!) : geometry.height, CGFloat(NOTE_VALUE_Q*Float(geometry.width)/widthSum*3.14))
+        relativeHeight = min(min(maxHeight != nil ? (maxHeight!) : geometry.height, geometry.height*0.75), CGFloat(NOTE_VALUE_Q*Float(geometry.width)/widthSum*3.14))
         
     }
     
