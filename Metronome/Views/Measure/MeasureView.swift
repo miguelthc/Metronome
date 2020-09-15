@@ -11,15 +11,9 @@ struct MeasureView: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     
     var body: some View {
-        Group{
-            if(metronomeEnvironment.measureType == MeasureType.Simple){
-                SimpleMeasureView()
-            }else if(metronomeEnvironment.measureType == MeasureType.Beats){
+       
                 BeatMeasureView()
-            }else{
-                SquareMeasureView()
-            }
-        }.frame(height: 80)
+                    .frame(height: 80)
     }
 }
 

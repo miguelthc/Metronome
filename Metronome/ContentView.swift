@@ -11,7 +11,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         MetronomeView()
-            .background(Color.init(red: 251/255, green: 254/255, blue: 254/255).edgesIgnoringSafeArea(.all))
     }
 }
 

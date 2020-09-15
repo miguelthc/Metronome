@@ -12,32 +12,6 @@ struct MetronomeView: View {
     
     var body: some View {
         VStack {
-            
-            HStack{
-                Button(action: {self.metronomeEnvironment.measureType = MeasureType.Simple}){
-                    Image(systemName: "circle")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        
-                }.disabled(metronomeEnvironment.measureType == MeasureType.Simple)
-                    .padding(.horizontal, 5)
-                
-                Button(action: {self.metronomeEnvironment.measureType = MeasureType.Beats}){
-                    GeometryReader{ geometry in
-                        RhythmView(rhythm: Rhythm(), timeSignatureNoteValue: .QUARTER, geometry: geometry.size)
-                    }.frame(width: 20, height: 20)
-                    
-                }.disabled(metronomeEnvironment.measureType == MeasureType.Beats)
-                .padding(.horizontal, 5)
-                
-                Button(action: {self.metronomeEnvironment.measureType = MeasureType.Square}){
-                    Image(systemName: "square")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                }.disabled(metronomeEnvironment.measureType == MeasureType.Square)
-                .padding(.horizontal, 5)
-            }.padding(.top, 5)
-            
             Spacer()
             
             MeasureView()

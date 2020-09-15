@@ -62,8 +62,6 @@
 		F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */; };
 		F45DC53D24CF4F7000D594B3 /* MetronomeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */; };
 		F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */; };
-		F4682C0A24F9540B00ADF13C /* SimpleMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4682C0924F9540B00ADF13C /* SimpleMeasureView.swift */; };
-		F4682C0C24F9551100ADF13C /* SquareMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4682C0B24F9551100ADF13C /* SquareMeasureView.swift */; };
 		F4F1690124E42E670049BEDD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1690024E42E670049BEDD /* DAO.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,8 +144,6 @@
 		F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeGenerator.swift; sourceTree = "<group>"; };
 		F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEnvironment.swift; sourceTree = "<group>"; };
 		F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeRepository.swift; sourceTree = "<group>"; };
-		F4682C0924F9540B00ADF13C /* SimpleMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeasureView.swift; sourceTree = "<group>"; };
-		F4682C0B24F9551100ADF13C /* SquareMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareMeasureView.swift; sourceTree = "<group>"; };
 		F4F1690024E42E670049BEDD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,9 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
-				F4682C0824F92FCC00ADF13C /* Simple */,
 				F4682C0624F92F7D00ADF13C /* Beats */,
-				F4682C0724F92FC200ADF13C /* Squares */,
 			);
 			path = Measure;
 			sourceTree = "<group>";
@@ -355,22 +349,6 @@
 				F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */,
 			);
 			path = Beats;
-			sourceTree = "<group>";
-		};
-		F4682C0724F92FC200ADF13C /* Squares */ = {
-			isa = PBXGroup;
-			children = (
-				F4682C0B24F9551100ADF13C /* SquareMeasureView.swift */,
-			);
-			path = Squares;
-			sourceTree = "<group>";
-		};
-		F4682C0824F92FCC00ADF13C /* Simple */ = {
-			isa = PBXGroup;
-			children = (
-				F4682C0924F9540B00ADF13C /* SimpleMeasureView.swift */,
-			);
-			path = Simple;
 			sourceTree = "<group>";
 		};
 		F4F168FD24E403860049BEDD /* Database */ = {
@@ -545,7 +523,6 @@
 				F45DC52824CF4F7000D594B3 /* AudioEngine.swift in Sources */,
 				F45DC53124CF4F7000D594B3 /* QuarterRest.swift in Sources */,
 				F45DC52A24CF4F7000D594B3 /* OneHundredTwentyEighthRest.swift in Sources */,
-				F4682C0A24F9540B00ADF13C /* SimpleMeasureView.swift in Sources */,
 				F45DC51324CF4F6F00D594B3 /* NoteValue.swift in Sources */,
 				F45DC51C24CF4F6F00D594B3 /* PickerBeatView.swift in Sources */,
 				F45DC53724CF4F7000D594B3 /* SixteenthNote.swift in Sources */,
@@ -562,7 +539,6 @@
 				F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */,
 				F45DC52724CF4F6F00D594B3 /* RhythmEditorView.swift in Sources */,
 				F45DC52924CF4F7000D594B3 /* Accent.swift in Sources */,
-				F4682C0C24F9551100ADF13C /* SquareMeasureView.swift in Sources */,
 				F45DC52E24CF4F7000D594B3 /* WholeRest.swift in Sources */,
 				F45DC53424CF4F7000D594B3 /* ThirtySecondNote.swift in Sources */,
 				F45DC53624CF4F7000D594B3 /* QuarterNote.swift in Sources */,
