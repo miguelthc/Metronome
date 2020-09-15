@@ -32,14 +32,14 @@ class MetronomeEnvironment: ObservableObject {
     
     private var tapTimeStamps: [Double] = []
     
-    var beppOccuredCancellable: AnyCancellable?
+    var beepOccuredCancellable: AnyCancellable?
     var beatCountCancellable: AnyCancellable?
     var beatOccuredCancellable: AnyCancellable?
     
     private let metronomeGenerator = MetronomeGenerator()
     
     init() {
-        beppOccuredCancellable = metronomeGenerator.$beepOccured
+        beepOccuredCancellable = metronomeGenerator.$beepOccured
             .receive(on: DispatchQueue.main)
             .assign(to: \.beepOccured, on: self)
 
@@ -64,7 +64,7 @@ class MetronomeEnvironment: ObservableObject {
         set(newBpm) {
             metronome.bpm = newBpm
             if isPlaying {
-                metronomeGenerator.updateMetronome(metronome: metronome)
+                metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: isPlaying)
             }
         }
     }
@@ -92,7 +92,7 @@ class MetronomeEnvironment: ObservableObject {
         isPlaying.toggle()
         
         if(isPlaying){
-            metronomeGenerator.updateMetronome(metronome: metronome)
+            metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: false)
             metronomeGenerator.playMetronome()
         }else{
             metronomeGenerator.stopMetronome()
@@ -110,6 +110,8 @@ class MetronomeEnvironment: ObservableObject {
     func decrementBpm(){
         if(bpm-1 < Metronome.minBpm) {
             bpm = Metronome.minBpm
+        }else if(bpm > Metronome.maxBpm){
+            bpm = Metronome.maxBpm
         }else{
             bpm -= 1
         }
@@ -377,7 +379,7 @@ class MetronomeEnvironment: ObservableObject {
     
     private func updateMetronomeGenerator(){
         if isPlaying {
-            metronomeGenerator.updateMetronome(metronome: metronome)
+            metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: isPlaying)
         }
     }
     

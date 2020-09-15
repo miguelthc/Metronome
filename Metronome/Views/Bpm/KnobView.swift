@@ -71,7 +71,7 @@ struct KnobView: View {
         
         let gestureAngle = Double(atan(y/x))
         
-        if (x > 0) {
+        if (x >= 0) {
             if(knobState.gestureOngoing && !knobState.lastXPositive || !knobState.gestureOngoing && startX < 0){
                 if(y > 0){
                     knobState.angleOffset += Double.pi
@@ -88,6 +88,7 @@ struct KnobView: View {
                     knobState.angleOffset += Double.pi
                 }
             }
+            
             knobState.lastXPositive = false
         }
         

@@ -14,23 +14,37 @@ class MetronomeGenerator: ObservableObject {
     @Published var beepOccured: Bool = false
     @Published var beatCount: Int = 1
     @Published var beatOccured: Bool = false
-    
-    private var incrementBeep: Bool = false
-    private var timeToNextBeepSet: Bool = false
-    
+        
     private var noteValueCount = 1
     private var rhythmTimeValues: [[RhythmValue]] = []
+    private var bpm: Double = 60.0
     
     private var time: Float = 0.0
     
+    private var oldBpm: Double = 0
+    private var oldRhythmTimeValues: [[RhythmValue]] = []
+    private var rhythmValuesSet = true
+    
+    private var beepTime: Float = 0.0
+    private var beepsToPlay: [RhythmValue] = []
+    
     init() {
         audioEngine = AudioEngine(renderFunction: renderFunction)
+        audioEngine.setSourceNode(renderFunction: setRenderFunction())
     }
     
-    func updateMetronome(metronome: Metronome){
+    func updateMetronome(metronome: Metronome, wasPlaying: Bool){
+        if(wasPlaying){
+            rhythmValuesSet = false
+            oldBpm = bpm
+            oldRhythmTimeValues = rhythmTimeValues
+        }
+        
+        bpm = metronome.bpm.rounded()
         setRhythmValues(metronome: metronome)
-        setRenderFunction(bpm: metronome.bpm)
-        audioEngine.newSourceNode(renderFunction: self.renderFunction)
+        rhythmValuesSet = true
+
+        time = time * Float(oldBpm/bpm)
     }
     
     func resetMetornome(){
@@ -39,57 +53,60 @@ class MetronomeGenerator: ObservableObject {
         noteValueCount = 1
         beatOccured = false
         beepOccured = false
-        incrementBeep = false
     }
- 
     
-    private func setRenderFunction(bpm: Double){
-        
-        let timeBetweenBeats: Float = 60 / Float(bpm)
-        
-        renderFunction = { (deltaTime: Float, _: UInt64) -> Float in
-            let sampleValue: Float
+    
+    private func setRenderFunction() -> (Float, UInt64) -> Float {
+    
+        let renderFunction = { (deltaTime: Float, _: UInt64) -> Float in
+            var sampleValue: Float = 0.0
+            let bpm = self.rhythmValuesSet ? self.bpm : self.oldBpm
+            let rhythmTimeValues = self.rhythmValuesSet ? self.rhythmTimeValues : self.oldRhythmTimeValues
             
-            if(self.beatCount > self.rhythmTimeValues.count){
+            
+            if(self.beatCount > rhythmTimeValues.count){
                 self.resetMetornome()
             }
-            
-            if (self.rhythmTimeValues[self.beatCount-1].count > 0){
-                let noteValueTime = Float(self.rhythmTimeValues[self.beatCount-1][self.noteValueCount-1].timeValue)
-                let frequency: Float = self.rhythmTimeValues[self.beatCount-1][self.noteValueCount-1].accent ? 1173.3 : 880.0
                 
-                if (self.time >= noteValueTime && self.time <= noteValueTime + 0.02){
-                                        
-                    sampleValue = sin(2.0 * Float.pi * frequency * (self.time-noteValueTime)) * (-pow((100*((self.time-noteValueTime) - 0.01)), 8) + 1)
+            if (rhythmTimeValues[self.beatCount-1].count > 0){
+                
+                if(rhythmTimeValues[self.beatCount-1].count >= self.noteValueCount && self.time >= rhythmTimeValues[self.beatCount-1][self.noteValueCount-1].timeValue){
                     
-                    if(!self.beepOccured){
-                        self.beepOccured = true
-                        self.incrementBeep = true
-                    }
-                }else{
-                    sampleValue = 0.0
-                    
-                    if(self.incrementBeep){
-                        if(self.rhythmTimeValues[self.beatCount-1].count > self.noteValueCount){
-                            self.noteValueCount += 1
-                            self.incrementBeep = false
-                            self.timeToNextBeepSet = false
+                    self.beepsToPlay.append(rhythmTimeValues[self.beatCount-1][self.noteValueCount-1])
+                    self.noteValueCount += 1
+                }
+                
+                if(self.beepsToPlay.count > 0){
+                    if(self.beepTime < 0.02){
+                        let frequency: Float = self.beepsToPlay[0].accent ? 1173.3 : 880.0
+                        
+                        sampleValue = sin(2.0 * Float.pi * frequency * self.beepTime) * (-pow((100*((self.beepTime) - 0.01)), 8) + 1)
+
+                        self.beepTime += deltaTime
+                        
+                        if(!self.beepOccured){
+                            self.beepOccured = true
                         }
+                    }else{
+                        self.beepsToPlay.removeFirst()
+                        self.beepTime = 0
                     }
                 }
-            }else{
-                sampleValue = 0.0
             }
-            
+               
             self.time += deltaTime
-            
+               
+            let timeBetweenBeats: Float = 60 / Float(bpm)
+               
             if(self.time >= timeBetweenBeats) {
                 self.time -= timeBetweenBeats
                 self.incrementBeatCount()
             }
-            
+        
             return sampleValue
         }
+            
+        return renderFunction
     }
     
     

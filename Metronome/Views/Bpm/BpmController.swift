@@ -13,17 +13,17 @@ struct BpmController: View {
     var body: some View {
         HStack{
             Button(action: metronomeEnvironment.decrementBpm) {
-                    Text("-1")
+                Text(metronomeEnvironment.bpm > Metronome.maxBpm ? "-" : "-1")
             }.padding(.horizontal)
-            .disabled(metronomeEnvironment.metronome.bpm.rounded() == Metronome.minBpm)
+            .disabled(metronomeEnvironment.metronome.bpm.rounded() <= Metronome.minBpm)
             
             KnobView()
                 .frame(width: 150, height: 150)
             
             Button(action: metronomeEnvironment.incrementBpm) {
-                Text("+1")
+                Text(metronomeEnvironment.bpm > Metronome.maxBpm ? "+" : "+1")
             }.padding(.horizontal)
-            .disabled(metronomeEnvironment.metronome.bpm.rounded() == Metronome.maxBpm)
+            .disabled(metronomeEnvironment.metronome.bpm.rounded() >= Metronome.maxBpm)
         }
     }
 }

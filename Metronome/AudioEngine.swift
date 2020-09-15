@@ -26,11 +26,9 @@ class AudioEngine {
                                         sampleRate: sampleRate,
                                         channels: 1,
                                         interleaved: format.isInterleaved)!
-        
-        setSourceNode(renderFunction: renderFunction)
     }
     
-    private func setSourceNode(renderFunction: @escaping (Float, UInt64) -> Float) {
+    func setSourceNode(renderFunction: @escaping (Float, UInt64) -> Float) {
         self.sourceNode = AVAudioSourceNode(renderBlock: setRenderBlock(renderFunction: renderFunction))
         
         audioEngine.attach(sourceNode)
@@ -55,10 +53,10 @@ class AudioEngine {
         }
     }
     
-    func newSourceNode(renderFunction: @escaping (Float, UInt64) -> Float) {
+    /*func newSourceNode(renderFunction: @escaping (Float, UInt64) -> Float) {
         audioEngine.detach(sourceNode)
         setSourceNode(renderFunction: renderFunction)
-    }
+    }*/
     
     func startEngine() {
         audioEngine.prepare()
