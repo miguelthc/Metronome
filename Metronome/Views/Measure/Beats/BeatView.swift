@@ -32,6 +32,8 @@ struct BeatView: View {
 }
 
 struct BeatModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    
     var selected: Bool = false
     var secondSelected: Bool = false
     var validRhythm: Bool = true
@@ -40,7 +42,7 @@ struct BeatModifier: ViewModifier {
         content
             .opacity(0)
             .overlay(RoundedRectangle(cornerRadius: 6)
-                        .stroke((selected ? (secondSelected ? Color.green : Color.blue) : Color.black), lineWidth: 2)
+                .stroke((selected ? (secondSelected ? Color.green : Color.blue) : (colorScheme == .dark) ? Color.white : Color.black), lineWidth: 2)
             )
             
             .overlay(

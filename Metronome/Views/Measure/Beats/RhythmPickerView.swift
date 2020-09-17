@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RhythmPickerView: View {
+struct RhythmPickerView: View {    
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     @EnvironmentObject var metronomeRepository: MetronomeRepository
     
