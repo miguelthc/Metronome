@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41989852517687300F1EBD2 /* SimpleMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41989842517687300F1EBD2 /* SimpleMeasureView.swift */; };
+		F419898E2517689200F1EBD2 /* SquaresMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */; };
 		F45DC4A724CF4DFF00D594B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */; };
 		F45DC4A924CF4DFF00D594B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */; };
 		F45DC4AC24CF4DFF00D594B3 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4AA24CF4DFF00D594B3 /* Metronome.xcdatamodeld */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F41989842517687300F1EBD2 /* SimpleMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeasureView.swift; sourceTree = "<group>"; };
+		F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresMeasureView.swift; sourceTree = "<group>"; };
 		F45DC4A324CF4DFF00D594B3 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +176,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F41989832517685300F1EBD2 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				F41989842517687300F1EBD2 /* SimpleMeasureView.swift */,
+			);
+			path = Simple;
+			sourceTree = "<group>";
+		};
+		F41989892517687A00F1EBD2 /* Squares */ = {
+			isa = PBXGroup;
+			children = (
+				F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */,
+			);
+			path = Squares;
+			sourceTree = "<group>";
+		};
 		F45DC49A24CF4DFF00D594B3 = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +307,8 @@
 			isa = PBXGroup;
 			children = (
 				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
+				F41989892517687A00F1EBD2 /* Squares */,
+				F41989832517685300F1EBD2 /* Simple */,
 				F4682C0624F92F7D00ADF13C /* Beats */,
 			);
 			path = Measure;
@@ -536,6 +558,8 @@
 				F45DC53324CF4F7000D594B3 /* EighthNote.swift in Sources */,
 				F45DC52624CF4F6F00D594B3 /* MeasureView.swift in Sources */,
 				F45DC52224CF4F6F00D594B3 /* BeatView.swift in Sources */,
+				F41989852517687300F1EBD2 /* SimpleMeasureView.swift in Sources */,
+				F419898E2517689200F1EBD2 /* SquaresMeasureView.swift in Sources */,
 				F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */,
 				F45DC52724CF4F6F00D594B3 /* RhythmEditorView.swift in Sources */,
 				F45DC52924CF4F7000D594B3 /* Accent.swift in Sources */,
@@ -707,7 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Metronome/Preview Content\"";
 				DEVELOPMENT_TEAM = P9CR8VSY6T;
 				ENABLE_PREVIEWS = YES;
@@ -716,8 +740,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.miguelcarvalho.Metronome;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.finch.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -729,7 +753,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Metronome/Preview Content\"";
 				DEVELOPMENT_TEAM = P9CR8VSY6T;
 				ENABLE_PREVIEWS = YES;
@@ -738,8 +762,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.miguelcarvalho.Metronome;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = pt.finch.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

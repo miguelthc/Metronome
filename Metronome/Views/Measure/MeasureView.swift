@@ -11,9 +11,14 @@ struct MeasureView: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
     
     var body: some View {
-       
-                BeatMeasureView()
-                    .frame(height: 80)
+        TabView {
+            SimpleMeasureView()
+            
+            BeatMeasureView()
+                .frame(height: 80)
+            
+            SquaresMeasureView()
+        }
     }
 }
 
