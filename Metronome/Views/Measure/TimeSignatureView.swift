@@ -13,16 +13,13 @@ struct TimeSignatureView: View {
     
     var body: some View {
         ZStack {
-            VStack (spacing: 0.5){
-                Text("\(metronomeEnvironment.metronome.measure.timeSignature.noteCount)")
-                
-                Text("\(metronomeEnvironment.metronome.measure.timeSignature.noteValue.rawValue)")
-                
-            }.onTapGesture {
-                self.showIncrementers.toggle()
+            Button(action: {showIncrementers.toggle()} ){
+                VStack (spacing: 0.5){
+                    Text("\(metronomeEnvironment.measure.timeSignature.noteCount)")
+                    
+                    Text("\(metronomeEnvironment.measure.timeSignature.noteValue.rawValue)")
+                }.modifier(TimeSignatureStyle())
             }
-            .modifier(TimeSignatureStyle())
-            
             
             if showIncrementers {
                 Incrementer(increment: metronomeEnvironment.incrementBeatsPerMeasure,
@@ -77,6 +74,7 @@ struct TimeSignatureStyle: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(width: 60, height: 60)
+            .foregroundColor(Color.black)
             .font(.custom("", size: 22))
             .overlay(RoundedRectangle(cornerRadius: 8)
                 .stroke(Color(red: 50/255, green: 50/255, blue: 50/255), lineWidth: 1)

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct MeasureActionButtonsView: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
-    
-    @Binding var showRhythmPicker: Bool
-        
+            
     var body: some View {
             HStack{
                 
@@ -43,12 +41,8 @@ struct MeasureActionButtonsView: View {
                     Image(systemName: "trash")
                 }.disabled(self.metronomeEnvironment.selectedBeats.count == 0 || self.metronomeEnvironment.selectedBeats.count == self.metronomeEnvironment.measure.beatsPerMeasure)
                 
-                Button(action: {self.showRhythmPicker = true}){
-                    Text("Edit")
-                }.disabled(self.metronomeEnvironment.selectedBeats.count == 0)
-                
                 /*
-                 
+                
                 Button(action: {}){
                     Text("Reorder")
                 }
@@ -62,6 +56,6 @@ struct MeasureActionButtonsView: View {
 
 struct MeasureActionButtons_Previews: PreviewProvider {
     static var previews: some View {
-        MeasureActionButtonsView(showRhythmPicker: .constant(false))
+        MeasureActionButtonsView()
     }
 }

@@ -10,11 +10,11 @@ import Combine
 import SwiftUI
 
 class MetronomeEnvironment: ObservableObject {
-    @Published var measureType: MeasureType = MeasureType.Beats
-    
     // Metronome
-    @Published var metronome = Metronome()
+    @Published var metronome: Metronome
     @Published var isPlaying = false
+    
+    @Published var measureType: MeasureType = MeasureType.Beats
     
     // Measure
     @Published var selectedBeats: [Int] = []
@@ -38,7 +38,9 @@ class MetronomeEnvironment: ObservableObject {
     
     private let metronomeGenerator = MetronomeGenerator()
     
-    init() {
+    init(metronome: Metronome) {
+        self.metronome = metronome
+        
         beepOccuredCancellable = metronomeGenerator.$beepOccured
             .receive(on: DispatchQueue.main)
             .assign(to: \.beepOccured, on: self)
@@ -336,8 +338,6 @@ class MetronomeEnvironment: ObservableObject {
             ){
                 tapTimeStamps = []
             }
-        }else if tapTimeStamps.count == 5 {
-            tapTimeStamps.removeFirst()
         }
         
         tapTimeStamps.append(currentTimeStamp)
@@ -369,6 +369,27 @@ class MetronomeEnvironment: ObservableObject {
         for i in 1...measure.beatsPerMeasure{
             measure.beats.append(Beat(id: i, rhythm: measure.defaultBeat()))
         }
+    }
+    
+    func setNewMetronome(metronome: Metronome){
+        if(isPlaying){
+            metronomeGenerator.stopMetronome()
+        }
+        
+        self.metronome = metronome
+        isPlaying = false
+        measureType = MeasureType.Beats
+        
+        selectedBeats = []
+        invalidBeats = []
+        multipleBeatsSelectionMode = false
+        beatListZoomed = false
+        
+        beepOccured = false
+        beatOccured = false
+        beatPlaying = 0
+        
+        tapTimeStamps = []
     }
     
     private func removeInvalidBeat(id: Int){

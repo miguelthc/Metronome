@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		F41989852517687300F1EBD2 /* SimpleMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41989842517687300F1EBD2 /* SimpleMeasureView.swift */; };
 		F419898E2517689200F1EBD2 /* SquaresMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */; };
-		F45DC4A724CF4DFF00D594B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */; };
-		F45DC4A924CF4DFF00D594B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */; };
-		F45DC4AC24CF4DFF00D594B3 /* Metronome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4AA24CF4DFF00D594B3 /* Metronome.xcdatamodeld */; };
+		F433C0F52521F7C100B3BC55 /* MetronomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C0F42521F7C100B3BC55 /* MetronomeList.swift */; };
+		F433C105252202E900B3BC55 /* MetronomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C104252202E900B3BC55 /* MetronomeListItem.swift */; };
+		F45DC4A724CF4DFF00D594B3 /* MetronomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A624CF4DFF00D594B3 /* MetronomeApp.swift */; };
 		F45DC4AE24CF4DFF00D594B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */; };
 		F45DC4B024CF4E0A00D594B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45DC4AF24CF4E0A00D594B3 /* Assets.xcassets */; };
 		F45DC4B324CF4E0A00D594B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45DC4B224CF4E0A00D594B3 /* Preview Assets.xcassets */; };
-		F45DC4B624CF4E0A00D594B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45DC4B424CF4E0A00D594B3 /* LaunchScreen.storyboard */; };
 		F45DC4C124CF4E0A00D594B3 /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4C024CF4E0A00D594B3 /* MetronomeTests.swift */; };
 		F45DC4CC24CF4E0A00D594B3 /* MetronomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4CB24CF4E0A00D594B3 /* MetronomeUITests.swift */; };
 		F45DC51024CF4F6F00D594B3 /* NoteValueFraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4DA24CF4F6E00D594B3 /* NoteValueFraction.swift */; };
@@ -32,7 +31,6 @@
 		F45DC51B24CF4F6F00D594B3 /* BpmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4E824CF4F6E00D594B3 /* BpmView.swift */; };
 		F45DC51C24CF4F6F00D594B3 /* PickerBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */; };
 		F45DC51D24CF4F6F00D594B3 /* RhythmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */; };
-		F45DC51E24CF4F6F00D594B3 /* RhythmPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */; };
 		F45DC51F24CF4F6F00D594B3 /* MeasureBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */; };
 		F45DC52024CF4F6F00D594B3 /* TimeSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */; };
 		F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */; };
@@ -64,6 +62,7 @@
 		F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */; };
 		F45DC53D24CF4F7000D594B3 /* MetronomeEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */; };
 		F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */; };
+		F4CAE2182519F5C5004F1BC6 /* RhythmPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CAE2172519F5C5004F1BC6 /* RhythmPickerView.swift */; };
 		F4F1690124E42E670049BEDD /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1690024E42E670049BEDD /* DAO.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,19 +81,80 @@
 			remoteGlobalIDString = F45DC4A224CF4DFF00D594B3;
 			remoteInfo = Metronome;
 		};
+		F470FA1B252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
+			remoteInfo = "SQLite iOS";
+		};
+		F470FA1D252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
+			remoteInfo = "SQLiteTests iOS";
+		};
+		F470FA1F252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
+			remoteInfo = "SQLite Mac";
+		};
+		F470FA21252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
+			remoteInfo = "SQLiteTests Mac";
+		};
+		F470FA23252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
+			remoteInfo = "SQLite tvOS";
+		};
+		F470FA25252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
+			remoteInfo = "SQLiteTests tvOS";
+		};
+		F470FA27252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A121AC451CA35C79005A31D1;
+			remoteInfo = "SQLite watchOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F48F3C86251F85AF00350FD7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F41989842517687300F1EBD2 /* SimpleMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMeasureView.swift; sourceTree = "<group>"; };
 		F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresMeasureView.swift; sourceTree = "<group>"; };
+		F433C0F42521F7C100B3BC55 /* MetronomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeList.swift; sourceTree = "<group>"; };
+		F433C104252202E900B3BC55 /* MetronomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeListItem.swift; sourceTree = "<group>"; };
 		F45DC4A324CF4DFF00D594B3 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F45DC4AB24CF4DFF00D594B3 /* Metronome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Metronome.xcdatamodel; sourceTree = "<group>"; };
+		F45DC4A624CF4DFF00D594B3 /* MetronomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeApp.swift; sourceTree = "<group>"; };
 		F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F45DC4AF24CF4E0A00D594B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F45DC4B224CF4E0A00D594B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F45DC4B524CF4E0A00D594B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F45DC4B724CF4E0A00D594B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F45DC4BC24CF4E0A00D594B3 /* MetronomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DC4C024CF4E0A00D594B3 /* MetronomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeTests.swift; sourceTree = "<group>"; };
@@ -116,7 +176,6 @@
 		F45DC4E824CF4F6E00D594B3 /* BpmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BpmView.swift; sourceTree = "<group>"; };
 		F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerBeatView.swift; sourceTree = "<group>"; };
 		F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmView.swift; sourceTree = "<group>"; };
-		F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmPickerView.swift; sourceTree = "<group>"; };
 		F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureBeatView.swift; sourceTree = "<group>"; };
 		F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureView.swift; sourceTree = "<group>"; };
 		F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatValueView.swift; sourceTree = "<group>"; };
@@ -148,6 +207,8 @@
 		F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeGenerator.swift; sourceTree = "<group>"; };
 		F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEnvironment.swift; sourceTree = "<group>"; };
 		F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeRepository.swift; sourceTree = "<group>"; };
+		F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
+		F4CAE2172519F5C5004F1BC6 /* RhythmPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmPickerView.swift; sourceTree = "<group>"; };
 		F4F1690024E42E670049BEDD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +253,15 @@
 			path = Squares;
 			sourceTree = "<group>";
 		};
+		F433C1032522025A00B3BC55 /* MetronomeList */ = {
+			isa = PBXGroup;
+			children = (
+				F433C0F42521F7C100B3BC55 /* MetronomeList.swift */,
+				F433C104252202E900B3BC55 /* MetronomeListItem.swift */,
+			);
+			path = MetronomeList;
+			sourceTree = "<group>";
+		};
 		F45DC49A24CF4DFF00D594B3 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +269,8 @@
 				F45DC4BF24CF4E0A00D594B3 /* MetronomeTests */,
 				F45DC4CA24CF4E0A00D594B3 /* MetronomeUITests */,
 				F45DC4A424CF4DFF00D594B3 /* Products */,
+				F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */,
+				F48F3C83251F85AF00350FD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,21 +287,17 @@
 		F45DC4A524CF4DFF00D594B3 /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
-				F45DC4A624CF4DFF00D594B3 /* AppDelegate.swift */,
-				F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */,
+				F45DC4A624CF4DFF00D594B3 /* MetronomeApp.swift */,
 				F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */,
-				F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */,
-				F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */,
 				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
+				F4D2E1A7251D5EDC000A87A9 /* Audio */,
 				F4F168FD24E403860049BEDD /* Database */,
 				F45DC4DB24CF4F6E00D594B3 /* Models */,
 				F45DC4E124CF4F6E00D594B3 /* Views */,
 				F45DC4F724CF4F6F00D594B3 /* MusicalComponents */,
 				F45DC4D924CF4F6E00D594B3 /* MusicConcepts */,
 				F45DC4AF24CF4E0A00D594B3 /* Assets.xcassets */,
-				F45DC4B424CF4E0A00D594B3 /* LaunchScreen.storyboard */,
 				F45DC4B724CF4E0A00D594B3 /* Info.plist */,
-				F45DC4AA24CF4DFF00D594B3 /* Metronome.xcdatamodeld */,
 				F45DC4B124CF4E0A00D594B3 /* Preview Content */,
 			);
 			path = Metronome;
@@ -284,8 +352,9 @@
 		F45DC4E124CF4F6E00D594B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F45DC4E224CF4F6E00D594B3 /* PlayView.swift */,
 				F45DC4E324CF4F6E00D594B3 /* MetronomeView.swift */,
+				F45DC4E224CF4F6E00D594B3 /* PlayView.swift */,
+				F433C1032522025A00B3BC55 /* MetronomeList */,
 				F45DC4E424CF4F6E00D594B3 /* Bpm */,
 				F45DC4E924CF4F6E00D594B3 /* Measure */,
 			);
@@ -307,9 +376,11 @@
 			isa = PBXGroup;
 			children = (
 				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
-				F41989892517687A00F1EBD2 /* Squares */,
+				F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */,
+				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
 				F41989832517685300F1EBD2 /* Simple */,
 				F4682C0624F92F7D00ADF13C /* Beats */,
+				F41989892517687A00F1EBD2 /* Squares */,
 			);
 			path = Measure;
 			sourceTree = "<group>";
@@ -359,18 +430,62 @@
 		F4682C0624F92F7D00ADF13C /* Beats */ = {
 			isa = PBXGroup;
 			children = (
-				F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */,
-				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
-				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
-				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
-				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
-				F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */,
-				F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */,
-				F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */,
+				F4CAE223251A3EE5004F1BC6 /* Display */,
+				F4CAE21F251A3EB7004F1BC6 /* Editting */,
 				F45DC4F024CF4F6E00D594B3 /* BeatView.swift */,
 				F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */,
 			);
 			path = Beats;
+			sourceTree = "<group>";
+		};
+		F470FA12252DFF6B00D04FD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F470FA1C252DFF6B00D04FD3 /* SQLite.framework */,
+				F470FA1E252DFF6B00D04FD3 /* SQLiteTests iOS.xctest */,
+				F470FA20252DFF6B00D04FD3 /* SQLite.framework */,
+				F470FA22252DFF6B00D04FD3 /* SQLiteTests Mac.xctest */,
+				F470FA24252DFF6B00D04FD3 /* SQLite.framework */,
+				F470FA26252DFF6B00D04FD3 /* SQLiteTests tvOS.xctest */,
+				F470FA28252DFF6B00D04FD3 /* SQLite.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F48F3C83251F85AF00350FD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4CAE21F251A3EB7004F1BC6 /* Editting */ = {
+			isa = PBXGroup;
+			children = (
+				F4CAE2172519F5C5004F1BC6 /* RhythmPickerView.swift */,
+				F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */,
+				F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */,
+			);
+			path = Editting;
+			sourceTree = "<group>";
+		};
+		F4CAE223251A3EE5004F1BC6 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
+				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
+				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		F4D2E1A7251D5EDC000A87A9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */,
+				F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		F4F168FD24E403860049BEDD /* Database */ = {
@@ -392,6 +507,7 @@
 				F45DC49F24CF4DFF00D594B3 /* Sources */,
 				F45DC4A024CF4DFF00D594B3 /* Frameworks */,
 				F45DC4A124CF4DFF00D594B3 /* Resources */,
+				F48F3C86251F85AF00350FD7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -445,7 +561,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Miguel Carvalho";
 				TargetAttributes = {
 					F45DC4A224CF4DFF00D594B3 = {
@@ -472,6 +588,12 @@
 			mainGroup = F45DC49A24CF4DFF00D594B3;
 			productRefGroup = F45DC4A424CF4DFF00D594B3 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F470FA12252DFF6B00D04FD3 /* Products */;
+					ProjectRef = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F45DC4A224CF4DFF00D594B3 /* Metronome */,
@@ -481,12 +603,63 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		F470FA1C252DFF6B00D04FD3 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = F470FA1B252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA1E252DFF6B00D04FD3 /* SQLiteTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests iOS.xctest";
+			remoteRef = F470FA1D252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA20252DFF6B00D04FD3 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = F470FA1F252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA22252DFF6B00D04FD3 /* SQLiteTests Mac.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests Mac.xctest";
+			remoteRef = F470FA21252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA24252DFF6B00D04FD3 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = F470FA23252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA26252DFF6B00D04FD3 /* SQLiteTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SQLiteTests tvOS.xctest";
+			remoteRef = F470FA25252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F470FA28252DFF6B00D04FD3 /* SQLite.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SQLite.framework;
+			remoteRef = F470FA27252DFF6B00D04FD3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		F45DC4A124CF4DFF00D594B3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F45DC4B624CF4E0A00D594B3 /* LaunchScreen.storyboard in Resources */,
 				F45DC4B324CF4E0A00D594B3 /* Preview Assets.xcassets in Resources */,
 				F45DC4B024CF4E0A00D594B3 /* Assets.xcassets in Resources */,
 			);
@@ -518,10 +691,10 @@
 				F45DC51024CF4F6F00D594B3 /* NoteValueFraction.swift in Sources */,
 				F45DC51B24CF4F6F00D594B3 /* BpmView.swift in Sources */,
 				F45DC53224CF4F7000D594B3 /* MusicalComponent.swift in Sources */,
-				F45DC51E24CF4F6F00D594B3 /* RhythmPickerView.swift in Sources */,
+				F433C105252202E900B3BC55 /* MetronomeListItem.swift in Sources */,
 				F45DC51924CF4F6F00D594B3 /* KnobView.swift in Sources */,
 				F45DC52B24CF4F7000D594B3 /* SixtyFourthRest.swift in Sources */,
-				F45DC4A724CF4DFF00D594B3 /* AppDelegate.swift in Sources */,
+				F45DC4A724CF4DFF00D594B3 /* MetronomeApp.swift in Sources */,
 				F45DC53C24CF4F7000D594B3 /* MetronomeGenerator.swift in Sources */,
 				F45DC53A24CF4F7000D594B3 /* OneHundredTwentyEighthNote.swift in Sources */,
 				F45DC53B24CF4F7000D594B3 /* Dot.swift in Sources */,
@@ -536,9 +709,9 @@
 				F45DC53924CF4F7000D594B3 /* SixtyFourthNote.swift in Sources */,
 				F45DC52C24CF4F7000D594B3 /* SixteenthRest.swift in Sources */,
 				F45DC51A24CF4F6F00D594B3 /* BpmController.swift in Sources */,
-				F45DC4AC24CF4DFF00D594B3 /* Metronome.xcdatamodeld in Sources */,
 				F4F1690124E42E670049BEDD /* DAO.swift in Sources */,
 				F45DC52124CF4F6F00D594B3 /* BeatValueView.swift in Sources */,
+				F433C0F52521F7C100B3BC55 /* MetronomeList.swift in Sources */,
 				F45DC51224CF4F6F00D594B3 /* Metronome.swift in Sources */,
 				F45DC51124CF4F6F00D594B3 /* Rhythm.swift in Sources */,
 				F45DC51F24CF4F6F00D594B3 /* MeasureBeatView.swift in Sources */,
@@ -550,7 +723,6 @@
 				F45DC53724CF4F7000D594B3 /* SixteenthNote.swift in Sources */,
 				F45DC4AE24CF4DFF00D594B3 /* ContentView.swift in Sources */,
 				F45DC52524CF4F6F00D594B3 /* BeatListView.swift in Sources */,
-				F45DC4A924CF4DFF00D594B3 /* SceneDelegate.swift in Sources */,
 				F45DC52424CF4F6F00D594B3 /* MeasureActionButtonsView.swift in Sources */,
 				F45DC51D24CF4F6F00D594B3 /* RhythmView.swift in Sources */,
 				F45DC52D24CF4F7000D594B3 /* HalfRest.swift in Sources */,
@@ -561,6 +733,7 @@
 				F41989852517687300F1EBD2 /* SimpleMeasureView.swift in Sources */,
 				F419898E2517689200F1EBD2 /* SquaresMeasureView.swift in Sources */,
 				F45DC53E24CF4F7000D594B3 /* MetronomeRepository.swift in Sources */,
+				F4CAE2182519F5C5004F1BC6 /* RhythmPickerView.swift in Sources */,
 				F45DC52724CF4F6F00D594B3 /* RhythmEditorView.swift in Sources */,
 				F45DC52924CF4F7000D594B3 /* Accent.swift in Sources */,
 				F45DC52E24CF4F7000D594B3 /* WholeRest.swift in Sources */,
@@ -600,17 +773,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		F45DC4B424CF4E0A00D594B3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F45DC4B524CF4E0A00D594B3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		F45DC4CE24CF4E0A00D594B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -638,6 +800,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -698,6 +861,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -736,6 +900,7 @@
 				DEVELOPMENT_TEAM = P9CR8VSY6T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Metronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -758,6 +923,7 @@
 				DEVELOPMENT_TEAM = P9CR8VSY6T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Metronome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -894,19 +1060,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F45DC4AA24CF4DFF00D594B3 /* Metronome.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F45DC4AB24CF4DFF00D594B3 /* Metronome.xcdatamodel */,
-			);
-			currentVersion = F45DC4AB24CF4DFF00D594B3 /* Metronome.xcdatamodel */;
-			path = Metronome.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F45DC49B24CF4DFF00D594B3 /* Project object */;
 }

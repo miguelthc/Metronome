@@ -37,7 +37,8 @@ struct MeasureBeatView: View {
                      isValid: !metronomeEnvironment.invalidBeats.contains(beat.id))
                 .contentShape(Rectangle())
                 .onTapGesture { self.metronomeEnvironment.selectBeat(id: self.beat.id) }
-                .onLongPressGesture { self.metronomeEnvironment.selectMultipleBeat(id: self.beat.id) }
+                .onLongPressGesture{ self.metronomeEnvironment.selectMultipleBeat(id: self.beat.id) }
+                
         }
     }
 }

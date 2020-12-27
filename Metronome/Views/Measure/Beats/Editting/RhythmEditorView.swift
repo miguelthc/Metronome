@@ -71,7 +71,6 @@ struct RhythmEditorView: View {
     @EnvironmentObject var metronomeRepository: MetronomeRepository
     
     @Binding var showRhythmEditor: Bool
-    @Binding var showRhythmPicker: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -113,7 +112,6 @@ struct RhythmEditorView: View {
                  
                 Button(action: {
                     self.addRhythm()
-                    self.showRhythmPicker = false
                     self.showRhythmEditor = false
                 }){
                     Image(systemName: "plus")
@@ -287,6 +285,6 @@ struct DotNumSelec: View {
 
 struct RhythmEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        RhythmEditorView(showRhythmEditor: .constant(true), showRhythmPicker: .constant(false))
+        RhythmEditorView(showRhythmEditor: .constant(true))
     }
 }
