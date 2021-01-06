@@ -20,14 +20,18 @@ struct BeatView: View {
             .aspectRatio(1, contentMode: .fit)
             .modifier(BeatModifier(selected: selected, secondSelected: secondSelected, validRhythm: isValid))
             .overlay(
-                HStack{
-                    Spacer(minLength: 4)
-                    GeometryReader { geometry in
-                        RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: geometry.size, maxHeight: 28)
+                GeometryReader { geometry in
+                    VStack{
+                        Spacer()
+                        HStack{
+                            Spacer(minLength: 4)
+                            RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: CGSize(width: geometry.size.width-10, height: geometry.size.height), maxHeight: 28)
+                            Spacer(minLength: 6)
+                        }
+                        Spacer()
                     }
-                    Spacer(minLength: 4)
                 }
-        )
+            )
     }
 }
 
