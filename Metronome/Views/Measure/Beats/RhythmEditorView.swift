@@ -137,14 +137,14 @@ struct RhythmDisplay: View {
     let rhythmDisplayMaxHeight: CGFloat = 50
     
     var body: some View {
-        HStack{
-            Spacer()
+        
             
-            GeometryReader{ geometry in
+        GeometryReader{ geometry in
+            HStack{
+                Spacer()
                 RhythmView(rhythm: self.metronomeEnvironment.rhythmEditorObject.rhythm, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue, compound: self.metronomeEnvironment.measure.compound, geometry: geometry.size)
+                Spacer()
             }
-            
-            Spacer()
         }.frame(height: rhythmDisplayMaxHeight)
         .padding(.vertical)
     }
