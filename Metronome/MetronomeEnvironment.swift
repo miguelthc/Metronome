@@ -369,6 +369,8 @@ class MetronomeEnvironment: ObservableObject {
         for i in 1...measure.beatsPerMeasure{
             measure.beats.append(Beat(id: i, rhythm: measure.defaultBeat()))
         }
+        
+        updateMetronomeGenerator()
     }
     
     private func removeInvalidBeat(id: Int){

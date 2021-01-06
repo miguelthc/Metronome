@@ -22,13 +22,13 @@ struct BeatView: View {
             .overlay(
                 GeometryReader { geometry in
                     VStack{
-                        Spacer()
+                        Spacer(minLength: 2)
                         HStack{
                             Spacer(minLength: 4)
-                            RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: CGSize(width: geometry.size.width-10, height: geometry.size.height), maxHeight: 28)
+                            RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: CGSize(width: geometry.size.width-10, height: geometry.size.height - 4), maxHeight: 28)
                             Spacer(minLength: 6)
                         }
-                        Spacer()
+                        Spacer(minLength: 2)
                     }
                 }
             )
