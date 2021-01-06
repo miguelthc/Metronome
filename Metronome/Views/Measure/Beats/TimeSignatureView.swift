@@ -34,7 +34,7 @@ struct TimeSignatureView: View {
                 Incrementer(increment: metronomeEnvironment.incrementMeasureNoteValue,
                             decrement: metronomeEnvironment.decrementMeasureNoteValue,
                             decrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == (metronomeEnvironment.measure.compound ? NoteValueFraction.HALF : NoteValueFraction.WHOLE),
-                            incrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == NoteValueFraction.SIXTY_FOURTH)
+                            incrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == NoteValueFraction.SIXTEENTH)
                     .offset(y: 55)
             }
         }

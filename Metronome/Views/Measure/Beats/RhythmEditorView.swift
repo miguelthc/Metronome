@@ -158,8 +158,8 @@ struct NoteValueList: View {
 
     var body: some View {
         HStack(alignment: metronomeEnvironment.rhythmEditorObject.rest ? .center : .bottom, spacing: 0) {
-            
-            ForEach(NoteValueFraction.allCases.dropLast(), id: \.rawValue) { noteValue in
+                        
+            ForEach(NoteValueFraction.allCases.dropFirst(NoteValueFraction.allCases.firstIndex(of: metronomeEnvironment.measure.timeSignature.noteValue)!).prefix(3), id: \.rawValue) { noteValue in
                 return Group{
                     if((self.metronomeEnvironment.measure.compound ? noteValue.rawValue*2 : noteValue.rawValue)  >= self.metronomeEnvironment.measure.timeSignature.noteValue.rawValue){
                         
