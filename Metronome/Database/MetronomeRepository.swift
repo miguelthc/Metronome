@@ -143,6 +143,7 @@ extension MetronomeRepository {
     
     static let initialSimpleRhythms: [Rhythm] = [
             Rhythm(),
+            Rhythm(noteValues: [NoteValue(baseFraction: 1, isRest: true)]),
             Rhythm(noteValues: [NoteValue(baseFraction: 2), NoteValue(baseFraction: 2)]),
             Rhythm(noteValues: [NoteValue(baseFraction: 2, isRest: true), NoteValue(baseFraction: 2)]),
             Rhythm(noteValues: [NoteValue(baseFraction: 2), NoteValue(baseFraction: 4), NoteValue(baseFraction: 4)]),
@@ -156,6 +157,7 @@ extension MetronomeRepository {
     
     static let initialCompoundRhythms: [Rhythm] = [
         Rhythm(noteValues: [NoteValue(baseFraction: 1, dots: 1)]),
+        Rhythm(noteValues: [NoteValue(baseFraction: 1, isRest: true, dots: 1)]),
         Rhythm(noteValues: [NoteValue(baseFraction: 2), NoteValue(baseFraction: 2), NoteValue(baseFraction: 2)]),
         Rhythm(noteValues: [NoteValue(baseFraction: 1), NoteValue(baseFraction: 2)]),
         Rhythm(noteValues: [NoteValue(baseFraction: 2), NoteValue(baseFraction: 1)]),

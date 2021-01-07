@@ -64,6 +64,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if(!metronomeRep.pickerRhythmDao.dbOpen){
             metronomeRep.pickerRhythmDao.openDatabase()
         }
+        
+        if(metronomeEnv.isPlaying){
+            metronomeEnv.metronomeGenerator.playMetronome()
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -76,7 +80,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             metronomeRep.pickerRhythmDao.closeDatabase()
         }
         
-        
+        if(metronomeEnv.isPlaying){
+            metronomeEnv.metronomeGenerator.stopMetronome()
+        }
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
