@@ -328,7 +328,7 @@ class MetronomeEnvironment: ObservableObject {
     func tap(){
         let currentTimeStamp = Date.timeIntervalSinceReferenceDate
         
-        if (tapTimeStamps.count > 1) {
+        if (tapTimeStamps.count > 0) {
             let newInterval = currentTimeStamp - tapTimeStamps.last!
             
             if(newInterval > 2 ||
@@ -337,6 +337,8 @@ class MetronomeEnvironment: ObservableObject {
                     tapTimeStamps.last! - tapTimeStamps[tapTimeStamps.count-2] < newInterval / 1.2)
             ){
                 tapTimeStamps = []
+            }else if tapTimeStamps.count == 5 {
+                tapTimeStamps.removeFirst()
             }
         }
         
@@ -368,6 +370,10 @@ class MetronomeEnvironment: ObservableObject {
         
         for i in 1...measure.beatsPerMeasure{
             measure.beats.append(Beat(id: i, rhythm: measure.defaultBeat()))
+        }
+        
+        if(isPlaying){
+            updateMetronomeGenerator()
         }
     }
     
