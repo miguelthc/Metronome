@@ -10,6 +10,8 @@ import Combine
 import SwiftUI
 
 class MetronomeEnvironment: ObservableObject {
+    @Published var measureType: MeasureType = MeasureType.Beats
+    
     // Metronome
     @Published var metronome = Metronome()
     @Published var isPlaying = false
@@ -28,17 +30,16 @@ class MetronomeEnvironment: ObservableObject {
     @Published var beatOccured: Bool = false
     var beatPlaying = 0
     
-    
     private var tapTimeStamps: [Double] = []
     
-    var beppOccuredCancellable: AnyCancellable?
+    var beepOccuredCancellable: AnyCancellable?
     var beatCountCancellable: AnyCancellable?
     var beatOccuredCancellable: AnyCancellable?
     
     let metronomeGenerator = MetronomeGenerator()
     
     init() {
-        beppOccuredCancellable = metronomeGenerator.$beepOccured
+        beepOccuredCancellable = metronomeGenerator.$beepOccured
             .receive(on: DispatchQueue.main)
             .assign(to: \.beepOccured, on: self)
 
@@ -63,7 +64,7 @@ class MetronomeEnvironment: ObservableObject {
         set(newBpm) {
             metronome.bpm = newBpm
             if isPlaying {
-                metronomeGenerator.updateMetronome(metronome: metronome)
+                metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: isPlaying)
             }
         }
     }
@@ -91,7 +92,7 @@ class MetronomeEnvironment: ObservableObject {
         isPlaying.toggle()
         
         if(isPlaying){
-            metronomeGenerator.updateMetronome(metronome: metronome)
+            metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: false)
             metronomeGenerator.playMetronome()
         }else{
             metronomeGenerator.stopMetronome()
@@ -325,7 +326,7 @@ class MetronomeEnvironment: ObservableObject {
     func tap(){
         let currentTimeStamp = Date.timeIntervalSinceReferenceDate
         
-        if (tapTimeStamps.count > 1) {
+        if (tapTimeStamps.count > 0) {
             let newInterval = currentTimeStamp - tapTimeStamps.last!
             
             if(newInterval > 2 ||
@@ -334,9 +335,9 @@ class MetronomeEnvironment: ObservableObject {
                     tapTimeStamps.last! - tapTimeStamps[tapTimeStamps.count-2] < newInterval / 1.2)
             ){
                 tapTimeStamps = []
+            }else if tapTimeStamps.count == 5 {
+                tapTimeStamps.removeFirst()
             }
-        }else if tapTimeStamps.count == 5 {
-            tapTimeStamps.removeFirst()
         }
         
         tapTimeStamps.append(currentTimeStamp)
@@ -368,6 +369,8 @@ class MetronomeEnvironment: ObservableObject {
         for i in 1...measure.beatsPerMeasure{
             measure.beats.append(Beat(id: i, rhythm: measure.defaultBeat()))
         }
+        
+        updateMetronomeGenerator()
     }
     
     private func removeInvalidBeat(id: Int){
@@ -378,7 +381,7 @@ class MetronomeEnvironment: ObservableObject {
     
     private func updateMetronomeGenerator(){
         if isPlaying {
-            metronomeGenerator.updateMetronome(metronome: metronome)
+            metronomeGenerator.updateMetronome(metronome: metronome, wasPlaying: isPlaying)
         }
     }
     
@@ -389,4 +392,10 @@ class MetronomeEnvironment: ObservableObject {
         }
     }
     
+}
+
+enum MeasureType {
+    case Simple
+    case Beats
+    case Square
 }

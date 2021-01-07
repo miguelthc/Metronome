@@ -8,6 +8,16 @@
 import SwiftUI
 
 struct MeasureView: View {
+    @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
+    
+    var body: some View {
+       
+                BeatMeasureView()
+                    .frame(height: 80)
+    }
+}
+
+struct BeatMeasureView: View {
     @State var showRhythmPicker: Bool = false
     
     var body: some View {

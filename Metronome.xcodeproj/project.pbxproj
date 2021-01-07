@@ -199,8 +199,8 @@
 				F45DC4A824CF4DFF00D594B3 /* SceneDelegate.swift */,
 				F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */,
 				F45DC4F624CF4F6E00D594B3 /* AudioEngine.swift */,
-				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
 				F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */,
+				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
 				F4F168FD24E403860049BEDD /* Database */,
 				F45DC4DB24CF4F6E00D594B3 /* Models */,
 				F45DC4E124CF4F6E00D594B3 /* Views */,
@@ -286,17 +286,8 @@
 		F45DC4E924CF4F6E00D594B3 /* Measure */ = {
 			isa = PBXGroup;
 			children = (
-				F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */,
-				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
 				F45DC4F424CF4F6E00D594B3 /* MeasureView.swift */,
-				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
-				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
-				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
-				F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */,
-				F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */,
-				F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */,
-				F45DC4F024CF4F6E00D594B3 /* BeatView.swift */,
-				F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */,
+				F4682C0624F92F7D00ADF13C /* Beats */,
 			);
 			path = Measure;
 			sourceTree = "<group>";
@@ -341,6 +332,23 @@
 				F45DC50B24CF4F6F00D594B3 /* OneHundredTwentyEighthNote.swift */,
 			);
 			path = NoteValues;
+			sourceTree = "<group>";
+		};
+		F4682C0624F92F7D00ADF13C /* Beats */ = {
+			isa = PBXGroup;
+			children = (
+				F45DC4EE24CF4F6E00D594B3 /* TimeSignatureView.swift */,
+				F45DC4EF24CF4F6E00D594B3 /* BeatValueView.swift */,
+				F45DC4F224CF4F6E00D594B3 /* MeasureActionButtonsView.swift */,
+				F45DC4F324CF4F6E00D594B3 /* BeatListView.swift */,
+				F45DC4ED24CF4F6E00D594B3 /* MeasureBeatView.swift */,
+				F45DC4EC24CF4F6E00D594B3 /* RhythmPickerView.swift */,
+				F45DC4EA24CF4F6E00D594B3 /* PickerBeatView.swift */,
+				F45DC4F524CF4F6E00D594B3 /* RhythmEditorView.swift */,
+				F45DC4F024CF4F6E00D594B3 /* BeatView.swift */,
+				F45DC4EB24CF4F6E00D594B3 /* RhythmView.swift */,
+			);
+			path = Beats;
 			sourceTree = "<group>";
 		};
 		F4F168FD24E403860049BEDD /* Database */ = {
@@ -709,7 +717,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.miguelcarvalho.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -725,6 +733,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+
 				DEVELOPMENT_ASSET_PATHS = "\"Metronome/Preview Content\"";
 				DEVELOPMENT_TEAM = P9CR8VSY6T;
 				ENABLE_PREVIEWS = YES;
@@ -733,7 +742,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.miguelcarvalho.Metronome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

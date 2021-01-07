@@ -20,18 +20,24 @@ struct BeatView: View {
             .aspectRatio(1, contentMode: .fit)
             .modifier(BeatModifier(selected: selected, secondSelected: secondSelected, validRhythm: isValid))
             .overlay(
-                HStack{
-                    Spacer(minLength: 4)
-                    GeometryReader { geometry in
-                        RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: geometry.size, maxHeight: 28)
+                GeometryReader { geometry in
+                    VStack{
+                        Spacer(minLength: 2)
+                        HStack{
+                            Spacer(minLength: 4)
+                            RhythmView(rhythm: self.rhythm, timeSignatureNoteValue: self.timeSignatureNoteValue, compound: self.compound, geometry: CGSize(width: geometry.size.width-10, height: geometry.size.height - 4), maxHeight: 28)
+                            Spacer(minLength: 6)
+                        }
+                        Spacer(minLength: 2)
                     }
-                    Spacer(minLength: 4)
                 }
-        )
+            )
     }
 }
 
 struct BeatModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    
     var selected: Bool = false
     var secondSelected: Bool = false
     var validRhythm: Bool = true
@@ -40,7 +46,7 @@ struct BeatModifier: ViewModifier {
         content
             .opacity(0)
             .overlay(RoundedRectangle(cornerRadius: 6)
-                        .stroke((selected ? (secondSelected ? Color.green : Color.blue) : Color.black), lineWidth: 2)
+                .stroke((selected ? (secondSelected ? Color.green : Color.blue) : (colorScheme == .dark) ? Color.white : Color.black), lineWidth: 2)
             )
             
             .overlay(

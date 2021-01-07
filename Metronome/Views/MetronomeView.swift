@@ -12,7 +12,6 @@ struct MetronomeView: View {
     
     var body: some View {
         VStack {
-            
             Spacer()
             
             MeasureView()

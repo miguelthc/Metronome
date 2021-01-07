@@ -137,14 +137,14 @@ struct RhythmDisplay: View {
     let rhythmDisplayMaxHeight: CGFloat = 50
     
     var body: some View {
-        HStack{
-            Spacer()
+        
             
-            GeometryReader{ geometry in
+        GeometryReader{ geometry in
+            HStack{
+                Spacer()
                 RhythmView(rhythm: self.metronomeEnvironment.rhythmEditorObject.rhythm, timeSignatureNoteValue: self.metronomeEnvironment.measure.timeSignature.noteValue, compound: self.metronomeEnvironment.measure.compound, geometry: geometry.size)
+                Spacer()
             }
-            
-            Spacer()
         }.frame(height: rhythmDisplayMaxHeight)
         .padding(.vertical)
     }
@@ -158,8 +158,8 @@ struct NoteValueList: View {
 
     var body: some View {
         HStack(alignment: metronomeEnvironment.rhythmEditorObject.rest ? .center : .bottom, spacing: 0) {
-            
-            ForEach(NoteValueFraction.allCases.dropLast(), id: \.rawValue) { noteValue in
+                        
+            ForEach(NoteValueFraction.allCases.dropFirst(NoteValueFraction.allCases.firstIndex(of: metronomeEnvironment.measure.timeSignature.noteValue)!).prefix(3), id: \.rawValue) { noteValue in
                 return Group{
                     if((self.metronomeEnvironment.measure.compound ? noteValue.rawValue*2 : noteValue.rawValue)  >= self.metronomeEnvironment.measure.timeSignature.noteValue.rawValue){
                         

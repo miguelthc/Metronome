@@ -34,7 +34,7 @@ struct TimeSignatureView: View {
                 Incrementer(increment: metronomeEnvironment.incrementMeasureNoteValue,
                             decrement: metronomeEnvironment.decrementMeasureNoteValue,
                             decrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == (metronomeEnvironment.measure.compound ? NoteValueFraction.HALF : NoteValueFraction.WHOLE),
-                            incrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == NoteValueFraction.SIXTY_FOURTH)
+                            incrementDisabled: metronomeEnvironment.measure.timeSignature.noteValue == NoteValueFraction.SIXTEENTH)
                     .offset(y: 55)
             }
         }
@@ -42,6 +42,8 @@ struct TimeSignatureView: View {
 }
 
 struct Incrementer: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let increment: () -> ()
     let decrement: () -> ()
     let decrementDisabled: Bool
@@ -65,7 +67,7 @@ struct Incrementer: View {
                 .disabled(incrementDisabled)
                 
             }
-        }.modifier(IncrementerStyle())
+        }.modifier(IncrementerStyle(dark: colorScheme == .dark))
         
         
     }
@@ -84,10 +86,12 @@ struct TimeSignatureStyle: ViewModifier {
 }
 
 struct IncrementerStyle: ViewModifier {
+    let dark: Bool
+    
     func body(content: Content) -> some View {
         content
             .frame(width: 60, height: 30)
-            .background(Color(red: 230/255, green: 230/255, blue: 234/255))
+            .background(dark ? Color(red: 50/255, green: 50/255, blue: 54/255) : Color(red: 230/255, green: 230/255, blue: 234/255))
             .clipShape(RoundedRectangle(cornerRadius: 6))
             .shadow(color: Color(red: 150/255, green: 150/255, blue: 150/255), radius: 1)
     }
