@@ -19,6 +19,8 @@ class MetronomeGenerator: ObservableObject {
     private var rhythmTimeValues: [[RhythmValue]] = []
     private var bpm: Double = 60.0
     
+    private var compound: Bool = false
+    
     private var time: Float = 0.0
     
     private var oldBpm: Double = 0
@@ -38,6 +40,11 @@ class MetronomeGenerator: ObservableObject {
             rhythmValuesSet = false
             oldBpm = bpm
             oldRhythmTimeValues = rhythmTimeValues
+            
+            if(metronome.measure.compound != compound){
+                compound = metronome.measure.compound
+                resetMetornome()
+            }
         }
         
         bpm = metronome.bpm.rounded()
