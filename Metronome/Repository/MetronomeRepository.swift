@@ -114,12 +114,14 @@ class MetronomeRepository: ObservableObject {
                                 beats: beatsToDescription(beats: metronome.measure.beats)))
     }
     
-    func loadMetronomes() -> [Metronome]{
+    func loadMetronomes(sorting: Sorting, reverse: Bool = false) -> [Metronome]{
         var metronomeList: [Metronome] = []
         
         for storeMetronome in dao.selectMetronomes() {
             metronomeList.append(storeMetronomeToMetronome(storeMetronome: storeMetronome))
         }
+        
+        //TODO: SORT
         
         return metronomeList
     }
@@ -273,4 +275,10 @@ extension MetronomeRepository {
         Rhythm(noteValues: [NoteValue(baseFraction: 1, isRest: true), NoteValue(baseFraction: 2)]),
         Rhythm(noteValues: [NoteValue(baseFraction: 2, dots: 1), NoteValue(baseFraction: 4), NoteValue(baseFraction: 2)]),
     ]
+}
+
+
+enum Sorting {
+    case ALPHA
+    case DATE
 }

@@ -51,11 +51,21 @@ struct BeatModifier: ViewModifier {
             
             .overlay(
                 GeometryReader{ geometry in
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color.red, lineWidth: 1.5)
-                        .opacity(self.validRhythm ? 0 : 1)
-                        .frame(width: geometry.size.width - 2, height: geometry.size.height - 2)
-                        .aspectRatio(1, contentMode: .fit)
+                    VStack{
+                        Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                        HStack{
+                            Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                            
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color.red, lineWidth: 1.5)
+                                .opacity(self.validRhythm ? 0 : 1)
+                                .frame(width: geometry.size.width - 2, height: geometry.size.height - 2)
+                                .aspectRatio(1, contentMode: .fit)
+                            
+                            Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                        }
+                        Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                    }
                 }
             )
     }

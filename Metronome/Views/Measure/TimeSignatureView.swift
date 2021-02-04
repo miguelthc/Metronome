@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimeSignatureView: View {
     @EnvironmentObject var metronomeEnvironment: MetronomeEnvironment
+    @Environment(\.colorScheme) var colorScheme
     @State var showIncrementers: Bool = false
     
     var body: some View {
@@ -18,7 +19,7 @@ struct TimeSignatureView: View {
                     Text("\(metronomeEnvironment.measure.timeSignature.noteCount)")
                     
                     Text("\(metronomeEnvironment.measure.timeSignature.noteValue.rawValue)")
-                }.modifier(TimeSignatureStyle())
+                }.modifier(TimeSignatureStyle(dark: colorScheme == .dark))
             }
             
             if showIncrementers {
@@ -71,10 +72,12 @@ struct Incrementer: View {
 }
 
 struct TimeSignatureStyle: ViewModifier {
+    let dark: Bool
+    
     func body(content: Content) -> some View {
         content
             .frame(width: 60, height: 60)
-            .foregroundColor(Color.black)
+            .foregroundColor(dark ? Color.white : Color.black)
             .font(.custom("", size: 22))
             .overlay(RoundedRectangle(cornerRadius: 8)
                 .stroke(Color(red: 50/255, green: 50/255, blue: 50/255), lineWidth: 1)

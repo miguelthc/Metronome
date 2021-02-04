@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,11 @@
 		F419898E2517689200F1EBD2 /* SquaresMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */; };
 		F433C0F52521F7C100B3BC55 /* MetronomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C0F42521F7C100B3BC55 /* MetronomeList.swift */; };
 		F433C105252202E900B3BC55 /* MetronomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C104252202E900B3BC55 /* MetronomeListItem.swift */; };
+		F43B6F1725B44D450000421C /* SwiftQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F43B6F1625B44D450000421C /* SwiftQLite */; };
+		F43B6F2125B504500000421C /* MetronomeDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6F2025B504500000421C /* MetronomeDAO.swift */; };
+		F43B6F2725B7966F0000421C /* RhythmDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6F2625B7966F0000421C /* RhythmDAO.swift */; };
+		F43B6F3325B796F40000421C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B6F3225B796F40000421C /* Repository.swift */; };
+		F43B6F4125C1C8E60000421C /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = F43B6F4025C1C8E60000421C /* SQLite */; };
 		F45DC4A724CF4DFF00D594B3 /* MetronomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4A624CF4DFF00D594B3 /* MetronomeApp.swift */; };
 		F45DC4AE24CF4DFF00D594B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */; };
 		F45DC4B024CF4E0A00D594B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45DC4AF24CF4E0A00D594B3 /* Assets.xcassets */; };
@@ -81,55 +86,6 @@
 			remoteGlobalIDString = F45DC4A224CF4DFF00D594B3;
 			remoteInfo = Metronome;
 		};
-		F470FA1B252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247AD31C3F04ED00AE3E12;
-			remoteInfo = "SQLite iOS";
-		};
-		F470FA1D252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247ADD1C3F04ED00AE3E12;
-			remoteInfo = "SQLiteTests iOS";
-		};
-		F470FA1F252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B3C1C3F3ED000AE3E12;
-			remoteInfo = "SQLite Mac";
-		};
-		F470FA21252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EE247B451C3F3ED000AE3E12;
-			remoteInfo = "SQLiteTests Mac";
-		};
-		F470FA23252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E5A1C6BB0F50062603F;
-			remoteInfo = "SQLite tvOS";
-		};
-		F470FA25252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 03A65E631C6BB0F60062603F;
-			remoteInfo = "SQLiteTests tvOS";
-		};
-		F470FA27252DFF6B00D04FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A121AC451CA35C79005A31D1;
-			remoteInfo = "SQLite watchOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -150,6 +106,9 @@
 		F419898D2517689200F1EBD2 /* SquaresMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquaresMeasureView.swift; sourceTree = "<group>"; };
 		F433C0F42521F7C100B3BC55 /* MetronomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeList.swift; sourceTree = "<group>"; };
 		F433C104252202E900B3BC55 /* MetronomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeListItem.swift; sourceTree = "<group>"; };
+		F43B6F2025B504500000421C /* MetronomeDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeDAO.swift; sourceTree = "<group>"; };
+		F43B6F2625B7966F0000421C /* RhythmDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmDAO.swift; sourceTree = "<group>"; };
+		F43B6F3225B796F40000421C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		F45DC4A324CF4DFF00D594B3 /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45DC4A624CF4DFF00D594B3 /* MetronomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeApp.swift; sourceTree = "<group>"; };
 		F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -207,7 +166,6 @@
 		F45DC50D24CF4F6F00D594B3 /* MetronomeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeGenerator.swift; sourceTree = "<group>"; };
 		F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEnvironment.swift; sourceTree = "<group>"; };
 		F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeRepository.swift; sourceTree = "<group>"; };
-		F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		F4CAE2172519F5C5004F1BC6 /* RhythmPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmPickerView.swift; sourceTree = "<group>"; };
 		F4F1690024E42E670049BEDD /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +175,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43B6F4125C1C8E60000421C /* SQLite in Frameworks */,
+				F43B6F1725B44D450000421C /* SwiftQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +222,16 @@
 			path = MetronomeList;
 			sourceTree = "<group>";
 		};
+		F43B6F3E25C1C88F0000421C /* SwiftQLite */ = {
+			isa = PBXGroup;
+			children = (
+				F43B6F2025B504500000421C /* MetronomeDAO.swift */,
+				F43B6F2625B7966F0000421C /* RhythmDAO.swift */,
+				F43B6F3225B796F40000421C /* Repository.swift */,
+			);
+			path = SwiftQLite;
+			sourceTree = "<group>";
+		};
 		F45DC49A24CF4DFF00D594B3 = {
 			isa = PBXGroup;
 			children = (
@@ -269,8 +239,6 @@
 				F45DC4BF24CF4E0A00D594B3 /* MetronomeTests */,
 				F45DC4CA24CF4E0A00D594B3 /* MetronomeUITests */,
 				F45DC4A424CF4DFF00D594B3 /* Products */,
-				F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */,
-				F48F3C83251F85AF00350FD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,7 +259,7 @@
 				F45DC4AD24CF4DFF00D594B3 /* ContentView.swift */,
 				F45DC50E24CF4F6F00D594B3 /* MetronomeEnvironment.swift */,
 				F4D2E1A7251D5EDC000A87A9 /* Audio */,
-				F4F168FD24E403860049BEDD /* Database */,
+				F4F168FD24E403860049BEDD /* Repository */,
 				F45DC4DB24CF4F6E00D594B3 /* Models */,
 				F45DC4E124CF4F6E00D594B3 /* Views */,
 				F45DC4F724CF4F6F00D594B3 /* MusicalComponents */,
@@ -438,27 +406,6 @@
 			path = Beats;
 			sourceTree = "<group>";
 		};
-		F470FA12252DFF6B00D04FD3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F470FA1C252DFF6B00D04FD3 /* SQLite.framework */,
-				F470FA1E252DFF6B00D04FD3 /* SQLiteTests iOS.xctest */,
-				F470FA20252DFF6B00D04FD3 /* SQLite.framework */,
-				F470FA22252DFF6B00D04FD3 /* SQLiteTests Mac.xctest */,
-				F470FA24252DFF6B00D04FD3 /* SQLite.framework */,
-				F470FA26252DFF6B00D04FD3 /* SQLiteTests tvOS.xctest */,
-				F470FA28252DFF6B00D04FD3 /* SQLite.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F48F3C83251F85AF00350FD7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F4CAE21F251A3EB7004F1BC6 /* Editting */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,13 +435,14 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
-		F4F168FD24E403860049BEDD /* Database */ = {
+		F4F168FD24E403860049BEDD /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				F43B6F3E25C1C88F0000421C /* SwiftQLite */,
 				F45DC50F24CF4F6F00D594B3 /* MetronomeRepository.swift */,
 				F4F1690024E42E670049BEDD /* DAO.swift */,
 			);
-			path = Database;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +462,10 @@
 			dependencies = (
 			);
 			name = Metronome;
+			packageProductDependencies = (
+				F43B6F1625B44D450000421C /* SwiftQLite */,
+				F43B6F4025C1C8E60000421C /* SQLite */,
+			);
 			productName = Metronome;
 			productReference = F45DC4A324CF4DFF00D594B3 /* Metronome.app */;
 			productType = "com.apple.product-type.application";
@@ -586,14 +538,12 @@
 				Base,
 			);
 			mainGroup = F45DC49A24CF4DFF00D594B3;
+			packageReferences = (
+				F43B6F1525B44D450000421C /* XCRemoteSwiftPackageReference "SwiftQLite" */,
+				F43B6F3F25C1C8E60000421C /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = F45DC4A424CF4DFF00D594B3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F470FA12252DFF6B00D04FD3 /* Products */;
-					ProjectRef = F470FA11252DFF6B00D04FD3 /* SQLite.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F45DC4A224CF4DFF00D594B3 /* Metronome */,
@@ -602,58 +552,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F470FA1C252DFF6B00D04FD3 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = F470FA1B252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA1E252DFF6B00D04FD3 /* SQLiteTests iOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests iOS.xctest";
-			remoteRef = F470FA1D252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA20252DFF6B00D04FD3 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = F470FA1F252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA22252DFF6B00D04FD3 /* SQLiteTests Mac.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests Mac.xctest";
-			remoteRef = F470FA21252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA24252DFF6B00D04FD3 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = F470FA23252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA26252DFF6B00D04FD3 /* SQLiteTests tvOS.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SQLiteTests tvOS.xctest";
-			remoteRef = F470FA25252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F470FA28252DFF6B00D04FD3 /* SQLite.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SQLite.framework;
-			remoteRef = F470FA27252DFF6B00D04FD3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F45DC4A124CF4DFF00D594B3 /* Resources */ = {
@@ -699,6 +597,7 @@
 				F45DC53A24CF4F7000D594B3 /* OneHundredTwentyEighthNote.swift in Sources */,
 				F45DC53B24CF4F7000D594B3 /* Dot.swift in Sources */,
 				F45DC51424CF4F6F00D594B3 /* Measure.swift in Sources */,
+				F43B6F2125B504500000421C /* MetronomeDAO.swift in Sources */,
 				F45DC51724CF4F6F00D594B3 /* MetronomeView.swift in Sources */,
 				F45DC53824CF4F7000D594B3 /* HalfNote.swift in Sources */,
 				F45DC52F24CF4F7000D594B3 /* ThirtySecondRest.swift in Sources */,
@@ -716,10 +615,12 @@
 				F45DC51124CF4F6F00D594B3 /* Rhythm.swift in Sources */,
 				F45DC51F24CF4F6F00D594B3 /* MeasureBeatView.swift in Sources */,
 				F45DC52824CF4F7000D594B3 /* AudioEngine.swift in Sources */,
+				F43B6F3325B796F40000421C /* Repository.swift in Sources */,
 				F45DC53124CF4F7000D594B3 /* QuarterRest.swift in Sources */,
 				F45DC52A24CF4F7000D594B3 /* OneHundredTwentyEighthRest.swift in Sources */,
 				F45DC51324CF4F6F00D594B3 /* NoteValue.swift in Sources */,
 				F45DC51C24CF4F6F00D594B3 /* PickerBeatView.swift in Sources */,
+				F43B6F2725B7966F0000421C /* RhythmDAO.swift in Sources */,
 				F45DC53724CF4F7000D594B3 /* SixteenthNote.swift in Sources */,
 				F45DC4AE24CF4DFF00D594B3 /* ContentView.swift in Sources */,
 				F45DC52524CF4F6F00D594B3 /* BeatListView.swift in Sources */,
@@ -1060,6 +961,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F43B6F1525B44D450000421C /* XCRemoteSwiftPackageReference "SwiftQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/miguelthc/SwiftQLite.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F43B6F3F25C1C8E60000421C /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F43B6F1625B44D450000421C /* SwiftQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F43B6F1525B44D450000421C /* XCRemoteSwiftPackageReference "SwiftQLite" */;
+			productName = SwiftQLite;
+		};
+		F43B6F4025C1C8E60000421C /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F43B6F3F25C1C8E60000421C /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F45DC49B24CF4DFF00D594B3 /* Project object */;
 }
